@@ -1,6 +1,7 @@
 # complexity-problem-book
 
+Building:
 
-    pdflatex peldatar.tex
-    makeindex -r -o peldatar.ind peldatar.idx
-    pdflatex peldatar.tex
+    . build.sh
+
+Output in `peldatar.pdf`.
