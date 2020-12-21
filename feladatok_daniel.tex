@@ -1,52 +1,31 @@
-\chapter{TeXelés}
-
-Elkezdtem véglegesen megoldani a nehéz laTeX problémát, hogy három különböző környezetben háromszor inkludálom a complexity.txt-t, és először csak feladatokat, aztán csak hinteket, aztán feladatokat és megoldásokat szeretnék látni, persze azonos számozással.
-
-Egy compactForm nevű boolean beállításától függ, hogy ezt a háromszoros, bőbeszédű, végleges változatot fordítja le, vagy egy tömör, javítgatáshoz sokkal praktikusabb változatot.
-
-Ismert hibák: A \hard hülyén eltávolodott a feladat sorszámától. Teljesen átnézendő, hogy mi és mi között mennyi vspace-nek kellene lennie, és most mennyi van ehelyett. Ha többet segítek, akkor azok azonos feladatszámot kapnak. (Ne segítsek többet.) Ha egy feladatnak több részfeladata van, akkor az (a) legyen egy sorban a feladat számával.
-
-Az index-szel még egyáltalán semmit sem csináltam, pedig biztos ez is felveti majd a saját problémáit. A tételjegyzékről és a referenciákról még el sem döntöttem, hogy lesz-e, és hogyan.
-
-Jelenleg lustaságból azok a fejezetek is megháromszorozódnak, amiknek nem kellene. Ki lehet ezt javítani új fájl bevezetése és a framecode megterhelése nélkül? Persze az új fájl bevezetése még jó is lehet: Ez lenne a self-documentation.
-
-A nyelvosztályokra készített makróm csúnyán bánik a kötőjelekkel: A legcsúnyább a \coNP, és pár másik co-, rájuk kell keresni. Bezzeg a \la{co-NP}-vel semmi baj.
-
-Az \ldots a tuti ellipszis?
-
-Az $\overline{x_i}$ nem szép. Hogy csinálják ezt rendesen?
-
-Rajtam kívül mindenki {\cl{\Sigma^p_2}}-val jelöli \Sigmatwo-t. És a p-t dőlt betűvel szokták írni.
-
-
-%------------------------------
-
 \chapter{Szándékok}
-
-Három részből áll a könyv. Feladatok-segítségek-megoldások. A megoldásos résznél megismételjük a feladat szövegét, a segítségesnél nem. Valami okosat ki kellene találni arra a helyzetre, amikor többször is akarok segíteni egy feladathoz. Lehet, hogy szélességi bejárás szerint sorolom fel a hinteket, és oda-vissza keresztreferenciákat teszek rájuk? Na ehhez komoly laTeX guru kellhet.
 
 Kati szerint több segítés helyett mégiscsak legyen feladatra bontás. Az emelletti érvek teljesen agyonnyomják az én ösztönös averziómat.
 
 Kati szerint legyen egy Jelölések fejezet, meg egy ,,felhasznált tételek'' fejezet.
 
-A Feladatok számozása a tételek szokásos számozásával azonos, fejezetszám.sorszám formában. A Definíciókat nem számozzuk. Lehetségesek továbbá a feladatok közti összekötő szövegek és kommentárok, (prochat és solchat parancs), de ezzel az eszközzel ritkán fogok élni.
+A Feladatok számozása a tételek szokásos számozásával azonos, fejezetszám.sorszám formában. A Definíciókat nem számozzuk. Lehetségesek továbbá a feladatok közti összekötő szövegek és kommentárok, (chat parancs), de ezzel az eszközzel ritkán fogok élni, és lehet, hogy
 
-A feladatok állítását tipikusan csak kijelentjük, ,,Bizonyítsuk be, hogy\ldots'' jellegű előtagokat nem használva. Eddig ettől az elvtől eltértem ott, ahol az előző mondatban egyszerhasználatos definíciót vezettem be, és így akartam megkülönböztetni a két kijelentő mondat szemantikáját. Például: \la{DOUBLE-SAT} a legalább két különböző kielégítéssel rendelkező Boole-formulák
+A feladatok állítását tipikusan csak kijelentjük, ,,Bizonyítsuk be, hogy\dots'' jellegű előtagokat nem használva. Eddig ettől az elvtől eltértem ott, ahol az előző mondatban egyszerhasználatos definíciót vezettem be, és így akartam megkülönböztetni a két kijelentő mondat szemantikáját. Például: \la{DOUBLE-SAT} a legalább két különböző kielégítéssel rendelkező Boole-formulák
 osztálya. Bizonyítsuk be, hogy \la{DOUBLE-SAT} \NP-teljes.
 
-A feladatok négy nehézségi szintbe vannak sorolva: \easy : könnyű, definíció megértését ellenőrző. Az alap, ami nincs külön jelölve. \hard : nehéz. \veryhard : nagyon nehéz. Mindet át kell nézni, de a könnyű az, amit utólag vezettem be, és ezért még általában nincs kitéve.
+A feladatok négy nehézségi szintbe vannak sorolva: difficulty=-1: könnyű, definíció megértését ellenőrző. 0: Az alap, ami nincs külön jelölve. 1: nehéz. 2: nagyon nehéz. Mindet át kell nézni, de a könnyű az, amit utólag vezettem be, és ezért még általában nincs kitéve. Eredetileg nem az exercise\_EGRES.sty-t használtam, úgyhogy az alfeladatoknál még benne maradt egy-kettő az eredeti \hard makrókból, mindenhol máshol a difficulty-t használom.
 
 Kati szerint az az állítás, amire egy közepes vagy gyengébb képességű hallgató visszakérdezne, leírandó, hiszen itt nincs mód a visszakérdezésre.
 
 A feladatok megoldásában nem hivatkozhatok a hintekben bevezetett fogalmakra és állításokra. A megoldások és hintek nem hivatkozhatnak más feladatoknak semmijére sem, beleértve a kitűzést is. Kati szerint hivatkozhassunk a feladatokra. A megoldásokban a korábbi feladatok kimondott állításait használhatnánk, meg például kijelenthetnénk, ha két feladat között valami viszonyulás van (alsó becslés-felső becslés).
 
-Ha az állítás valakinek a tétele (Borogyin, Kannan), akkor azt illene odaírni.
+Ha az állítás valakinek a tétele (Borogyin, Kannan), akkor azt oda kellene írni.
 
 A használt fogalmak közül azokra lesz definíció, amelyek nem szerepelnek a Lovászban. A jelölések ahol lehet, hozzá igazítandóak.
 
 A könnyebb kérdések válaszait kicsit részletesebben, pedánsabban írjuk le. Ez egyrészt azért célszerű, mert gyakran nem pontosan ugyanannak a közönségnek lesznek feladva. Másrészt vannak olyan technikai bonyodalmak, amelyeknek a részletes feldolgozása egy nehéz feladat fókuszáról elvonná a figyelmet, de egy könnyűnél a nagyvonalú elhanyagolásuk triviálissá tenné a feladatot. (A Kolmogorov-bonyolultság fejezetben még így is szőnyeg alá söpörtük a prefix kódolás kérdését.)
 
 A \LOGSPACE versus \NL jelölés következetlen, de az \Language gyakori használata indokolttá teszi. A gyakori ,,adjunk \LOGSPACE algoritmust'' mondatséma miatt sem lenne triviális javítani.
+
+Az $\overline{x_i}$ nem szép. Hogy csinálják ezt rendesen?
+
+Rajtam kívül mindenki {\cl{\Sigma^p_2}}-val jelöli \Sigmatwo-t. És a p-t dőlt betűvel szokták írni.
 
 Bele kellene írni, hogy minden $\log n$ kettő alapú.
 
@@ -59,6 +38,9 @@ A definíciókban a definiált szó legyen dőlt betűs (vagy félkövér?).
 Kéne bele párhuzamos bonyolultságelmélet.
 
 Teljesen lerabolni az Arora-Barak könyvet: http://www.cs.princeton.edu/theory/complexity/ . (Brutális nagy munka lesz.)
+
+Ismert hibák: A \hard hülyén eltávolodott a feladat sorszámától. Teljesen átnézendő, hogy mi és mi között mennyi vspace-nek kellene lennie, és most mennyi van ehelyett. Ha többet segítek, akkor azok azonos feladatszámot kapnak. (Ne segítsek többet.) Ha egy feladatnak több részfeladata van, akkor az (a) legyen egy sorban a feladat számával.
+
 
 %------------------------------
 
@@ -167,8 +149,8 @@ Az előző feladatban adott korlát optimális.
 Teljesség-visszavezetés. Ez többféle ismérv szerint is tovább finomítható: Egy kitüremkedő része a \SAT-környéki feladatok. A Friedl-gyűjteményben erősen képviselt a fázisátmenet témája, tehát az olyan feladatpárok, ahol egy feladat \NP-teljessége után egy hasonló feladat \P-beliségét kell megmutatni.
 
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy Ha az \Language nyelv \NP-teljes, akkor az $\Language' = \{ xx : x \in \Language \}$ nyelv is az.
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+Ha az \Language nyelv \NP-teljes, akkor az $\Language' = \{ xx : x \in \Language \}$ nyelv is az.
 \end{Exercise}
 
 
@@ -197,10 +179,10 @@ nyelve, amelyekben minden klóz (clause) legfeljebb $k$-elemű. }
 \hint{ Egy háromnál többször előforduló változó előfordulásaihoz vegyünk fel új változókat, és alkalmas CNF \wrk{valahol írni kellene, hogy így hívom a konjunktív normálformát, vagy pedig ki kellene írni} segítségével biztosítsuk, hogy ezek egyenlőek legyenek egymással. }
 \end{Exercise}
 
-\sol{ Egy konjunktív normálformát a kielégíthetősége megváltoztatása nélkül \la{SAT-3} alakra hozunk. Ehhez minden egyes háromnál többször előforduló változóját kiküszöböljük, az alábbi módon: Tegyük fel, hogy az $x$ változó (tagadásait is beleértve) $k$ alkalommal szerepel. Vegyük fel az új $x_1,\ldots,x_k$ változókat, és rendre cseréljük le $x$ előfordulásait ezekre. Ezek után azt kell garantálnunk, hogy az $x_i$ változók minden kielégítésben egyenlőek, amit az alábbi klózok hozzáadásával elérhetünk: $ x_1 \vee \overline{x_2}, \ldots, x_{k-1} \vee \overline{x_k}, x_k \vee \overline{x_1} $. Az új $x_i$ változók mindegyike pontosan háromszor szerepel az új formulában. }
+\sol{ Egy konjunktív normálformát a kielégíthetősége megváltoztatása nélkül \la{SAT-3} alakra hozunk. Ehhez minden egyes háromnál többször előforduló változóját kiküszöböljük, az alábbi módon: Tegyük fel, hogy az $x$ változó (tagadásait is beleértve) $k$ alkalommal szerepel. Vegyük fel az új $x_1,\dots,x_k$ változókat, és rendre cseréljük le $x$ előfordulásait ezekre. Ezek után azt kell garantálnunk, hogy az $x_i$ változók minden kielégítésben egyenlőek, amit az alábbi klózok hozzáadásával elérhetünk: $ x_1 \vee \overline{x_2}, \dots, x_{k-1} \vee \overline{x_k}, x_k \vee \overline{x_1} $. Az új $x_i$ változók mindegyike pontosan háromszor szerepel az új formulában. }
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy \la{SAT-2} \P-beli.
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+\la{SAT-2} \P-beli.
 \end{Exercise}
 
 
@@ -232,16 +214,16 @@ Az alábbi probléma \NP-teljes: Természetes számok egy multihalmaza két rés
 \end{Exercise}
 
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy Adjunk polinomiális algoritmust egy diszjunktív normálforma kielégíthetőségének eldöntésére.
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+Adjunk polinomiális algoritmust egy diszjunktív normálforma kielégíthetőségének eldöntésére.
 
 \hint{ Keressünk kielégíthető klózt. }
 \end{Exercise}
 
 
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy Jelölje \la{DOUBLE-SAT} a legalább két különböző kielégítéssel rendelkező konjunktív
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+Jelölje \la{DOUBLE-SAT} a legalább két különböző kielégítéssel rendelkező konjunktív
 normálformák nyelvét. Bizonyítsuk be, hogy \la{DOUBLE-SAT} \NP-teljes.
 \end{Exercise}
 
@@ -258,8 +240,8 @@ a csúcsszámuk. Bizonyítsuk be, hogy \la{HALF-CLIQUE} \NP-teljes.
 \sol{ Az \NP-beliség nyilvánvaló. A klasszikus ,,Van-e $G$-nek legalább $k$ méretű klikkje?'' feladatot vezetjük vissza. A leképezés egy $(G,k))$ párról a következő legyen: Ha $k<n/2$ ($n=|V(G)|$), akkor a gráfot egészítsük ki $n-2k$ csúccsal, amelyeket egymással és $G$ összes eredeti csúcsával összekötünk. Ha $k \geq n/2$, akkor a gráfot egészítsük ki $2k-n$ izolált csúccsal. A két esetről külön-külön bizonyítjuk, hogy megfelelő leképezés. A $k<n/2$ esetben egy $2n-2k$ csúcsú $G'$ gráfot kapunk, amelynek az $n-k$ méretű klikkjei kölcsönösen egyértelműen megfeleltethetőek $G$ $k$ méretű klikkjeinek. Ha $k \geq n/2$, akkor egy $2k$ csúcsú gráfot kapunk, amelynek $k$ méretű klikkjei kölcsönösen egyértelműen megfeleltethetőek $G$ $k$ méretű klikkjeinek. }
 
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy A lineáris időben kiszámítható Karp-redukcióra nézve nem létezik \P-teljes nyelv.
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+A lineáris időben kiszámítható Karp-redukcióra nézve nem létezik \P-teljes nyelv.
 \end{Exercise}
 
 \sol{ Tegyük fel, hogy létezik ilyen \Language nyelv. Az, hogy \Language \P-ben van, azt jelenti, hogy $\DTIME(n^k)$-ban van valamilyen rögzített $k$-ra. Válasszunk egy tetszőleges $\Language'$ nyelvet $\DTIME(n^{k+1})$-ből. \Language \P-teljessége azt jelenti, hogy $\Language'$-re adható egy olyan eldöntési algoritmus, amely először alkalmaz egy lineáris idejű Karp-redukciót a bemenetre, amelynek eredménye legyen az $x$ szó, aztán $x$ \Language-beliségét eldönti $O({|x|}^k)$ időben. A Karp-redukció linearitása miatt $|x|=O(n)$, tehát az algoritmus teljes futásideje $O(n^k)$, azaz $\Language'$ benne van $\DTIME(n^k)$-ban. Ezzel beláttuk, hogy $\DTIME(n^{k+1})=\DTIME(n^k)$, ami ellentmond az Időhierarchia-tételnek. Az ellentmondás bizonyítja, hogy nem létezik a feltételnek megfelelő \Language nyelv. }
@@ -273,10 +255,10 @@ Bizonyítsuk be, hogy ha \la{UNIQUE-SAT} eleme \NP, akkor $\NP = \coNP$.
 \wrk{döm: \coNP-nehezet kéne inkább írni, mert a \coNP-beliség szerintem nem igaz.}
 \end{Exercise}
 
-\sol{ Vezessük vissza $\overline{\la{SAT}}$-ot \la{UNIQUE-SAT}-ra. $\overline{\la{SAT}}$ \coNP-teljességéből már következik a bizonyítandó állítás. Legyen $F(x_1,\ldots,x_n)$ a konjunktív normálforma, amelynek a kielégíthetetlenségét kell eldöntenünk. A visszavezetés legyen a következő: Vezessünk be egy új $x_0$ változót, és konstuáljuk meg $F$-ből a következő $F'$ formulát:
+\sol{ Vezessük vissza $\overline{\la{SAT}}$-ot \la{UNIQUE-SAT}-ra. $\overline{\la{SAT}}$ \coNP-teljességéből már következik a bizonyítandó állítás. Legyen $F(x_1,\dots,x_n)$ a konjunktív normálforma, amelynek a kielégíthetetlenségét kell eldöntenünk. A visszavezetés legyen a következő: Vezessünk be egy új $x_0$ változót, és konstuáljuk meg $F$-ből a következő $F'$ formulát:
 $$(x_1 \rightarrow F) \wedge ... \wedge (x_n \rightarrow F) \wedge (x_0 \rightarrow F).$$
 
-Ha $F$ nem kielégíthető, akkor $F'$-nek pontosan egyetlen kielégítése van, a csupa hamis értékadás. Ha $F$ kielégíthető, akkor $F'$-t a csupa hamis értékadáson kívül még kielégíti az $F$ bármelyik kielégítése, méghozzá az $x_0$ mindkét választása mellett. A visszavezetés alkalmasságát beláttuk, de a megadott $F'$ formula nem konjunktív normálformájú. A megoldás befejezéséhez megmutatjuk, hogy $F'$ ekvivalens módon konjunktív normálformára hozható. Álljon $F$ a $C_1,\ldots,C_k$ klózokból. Ekkor
+Ha $F$ nem kielégíthető, akkor $F'$-nek pontosan egyetlen kielégítése van, a csupa hamis értékadás. Ha $F$ kielégíthető, akkor $F'$-t a csupa hamis értékadáson kívül még kielégíti az $F$ bármelyik kielégítése, méghozzá az $x_0$ mindkét választása mellett. A visszavezetés alkalmasságát beláttuk, de a megadott $F'$ formula nem konjunktív normálformájú. A megoldás befejezéséhez megmutatjuk, hogy $F'$ ekvivalens módon konjunktív normálformára hozható. Álljon $F$ a $C_1,\dots,C_k$ klózokból. Ekkor
 
 $$F' \equiv \bigwedge_{i=0}^{n}{\bigwedge_{j=1}^{k}{\overline{x_i} \vee C_j}}.$$
 
@@ -289,8 +271,8 @@ Ez a formula már konjunktív normálformában van, és hatékonyan előállíth
 \end{Exercise}
 
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy \reff{Friedl 9.13.} Pontos 3-fedésnek (exact 3-cover, \la{X3C}) hívjuk annak eldöntését, hogy egy háromelemű halmazokból álló halmazrendszernek létezik-e olyan részhalmazrendszere, amely partíció. Abból a feltételezésből kiindulva, hogy az \la{X3C} eldöntési feladat megoldására létezik polinomidejű eljárásunk, adjunk olyan eljárást, amely polinomidőben megoldja az \la{X3C} keresési feladatot, azaz adott halmazrendszerhez megkeresi a megfelelő partíciót, ha az létezik.
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+\reff{Friedl 9.13.} Pontos 3-fedésnek (exact 3-cover, \la{X3C}) hívjuk annak eldöntését, hogy egy háromelemű halmazokból álló halmazrendszernek létezik-e olyan részhalmazrendszere, amely partíció. Abból a feltételezésből kiindulva, hogy az \la{X3C} eldöntési feladat megoldására létezik polinomidejű eljárásunk, adjunk olyan eljárást, amely polinomidőben megoldja az \la{X3C} keresési feladatot, azaz adott halmazrendszerhez megkeresi a megfelelő partíciót, ha az létezik.
 \end{Exercise}
 
 
@@ -314,8 +296,8 @@ Ez a formula már konjunktív normálformában van, és hatékonyan előállíth
 \end{Exercise}
 
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy \reff{Friedl 9.30., 9.31.} Az $n$ csúcsú, $n+10$ élű gráfokon a \la{HAMILTON} és a 3-színezhetőség eldöntése polinomidőben lehetséges.
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+\reff{Friedl 9.30., 9.31.} Az $n$ csúcsú, $n+10$ élű gráfokon a \la{HAMILTON} és a 3-színezhetőség eldöntése polinomidőben lehetséges.
 \end{Exercise}
 
 
@@ -324,8 +306,8 @@ Ez a formula már konjunktív normálformában van, és hatékonyan előállíth
 \end{Exercise}
 
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy \reff{Friedl 9.37.} \NP-teljes annak eldöntése, hogy egy $n$ csúcsú gráfban létezik-e legalább $\sqrt n$ hosszú kör.
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+\reff{Friedl 9.37.} \NP-teljes annak eldöntése, hogy egy $n$ csúcsú gráfban létezik-e legalább $\sqrt n$ hosszú kör.
 \end{Exercise}
 
 \sol{ Az \NP-beliség nyilvánvaló, maga a megfelelő hosszúságú kör a tanú. Az \NP-teljesség bizonyításához a \la{HAMILTON} feladatot vezetjük vissza a feladatunkra. Legyen $G$ az $n$ csúcsú gráf, melynek Hamilton-tulajdonságát el kell döntenünk. Vegyünk hozzá $n^2-n$ izolált csúcsot a gráfhoz. Ebben a $G'$ gráfban pontosan akkor létezik $\sqrt{|V(G')|}=n$ csúcsú kör, ha $G$-ben létezik Hamilton-kör. }
@@ -391,8 +373,8 @@ Könnyen látható, hogy az eljárás végén egy maximális hosszúságú kört
 \chapter{Klasszikus bonyolultsági osztályok}
 
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy Véges nyelv felismerhető konstans időben.
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+Véges nyelv felismerhető konstans időben.
 \end{Exercise}
 
 
@@ -466,8 +448,8 @@ Analóg a viszonya \NE-nek $\NP \cap \TALLY$-hez. }
 \chapter{Logaritmikus tár}
 
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy Adjunk \LOGSPACE algoritmust, ami eldönti, hogy egy szó palindróma-e.
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+Adjunk \LOGSPACE algoritmust, ami eldönti, hogy egy szó palindróma-e.
 \end{Exercise}
 
 
@@ -538,7 +520,7 @@ Adjunk \LOGSPACE algoritmust, amely eldönti egy szóról a
 \{\ (,\ ),\ [,\ ]\ \} négyelemű ábécé felett, hogy helyesen zárójelezett-e. \wrk{Tipográfiailag csúnya.}
 \end{Exercise}
 
-\sol{ Először ellenőrizzük le logaritmikus tárban mindkét fajta zárójelről, hogy a másik fajta zárójelektől elvonatkoztatva, önmagában helyesen zárójelezett-e. (Ehhez oldjuk meg az előző feladatot.) Ha igen, akkor minden (nyitó- vagy záró, gömbölyű vagy szögletes) zárójelnek egyértelműen létezik párja, és az logaritmikus memóriával meg is található. Ekkor a következő egyszerű struktúratételt mondhatjuk ki: A szó akkor és csak akkor helyesen zárójelezett, ha nem létezik két olyan, különböző típusú zárójel-pár, amelyek ,,egymásba gabalyodottak'', azaz $(\ldots[\ldots)\ldots]$ mintájúak. Az ilyen tiltott konfigurációk megkereséséhez pedig egyszerűen végigmehetünk egy kettős ciklusban minden lehetséges olyan páron, ami két különböző típusú nyitó zárójelből áll, és a párjaikat megkeresve megvizsgálhatjuk az ,,egymásba gabalyodottságot''. \wrk{Egyrészt ez kicsit pongyola. Másrészt homályban hagyja, hogy a helyes zárójelezettség miféle definíciójából, és hogyan vezettük le a struktúratételt.} }
+\sol{ Először ellenőrizzük le logaritmikus tárban mindkét fajta zárójelről, hogy a másik fajta zárójelektől elvonatkoztatva, önmagában helyesen zárójelezett-e. (Ehhez oldjuk meg az előző feladatot.) Ha igen, akkor minden (nyitó- vagy záró, gömbölyű vagy szögletes) zárójelnek egyértelműen létezik párja, és az logaritmikus memóriával meg is található. Ekkor a következő egyszerű struktúratételt mondhatjuk ki: A szó akkor és csak akkor helyesen zárójelezett, ha nem létezik két olyan, különböző típusú zárójel-pár, amelyek ,,egymásba gabalyodottak'', azaz $(\dots[\dots)\dots]$ mintájúak. Az ilyen tiltott konfigurációk megkereséséhez pedig egyszerűen végigmehetünk egy kettős ciklusban minden lehetséges olyan páron, ami két különböző típusú nyitó zárójelből áll, és a párjaikat megkeresve megvizsgálhatjuk az ,,egymásba gabalyodottságot''. \wrk{Egyrészt ez kicsit pongyola. Másrészt homályban hagyja, hogy a helyes zárójelezettség miféle definíciójából, és hogyan vezettük le a struktúratételt.} }
 
 
 \begin{Exercise}[counter={sorszam}, difficulty=0]
@@ -570,8 +552,8 @@ Az \NL-teljesség bizonyításához visszavezetjük az \la{STCONN} feladatot \la
 \end{Exercise}
 
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy $\la{BIPARTITE} \in \NL$.
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+$\la{BIPARTITE} \in \NL$.
 
 \hint{ Használjuk az Immermann-Szelepcsényi tételt. }
 \end{Exercise}
@@ -607,7 +589,7 @@ Melyik \LOGSPACE-beli és melyik \NL-teljes az alábbi problémák közül?
 
 \hint{ Az $s-t$ összefüggő topologikusan rendezett irányított aciklikus gráfok nyelve \NL-teljes, mivel a \LOGSPACE Turing-gépről feltehető, hogy számolja, hogy indulása óta hány lépést tett meg. }
 
-\hint{ \wrk{Mondani se kell, hogy ez még nincs kész.} A redukció az alábbi sorokból fog állni: A DAG minden $x$ csúcsára leírjuk $x$-et kétszer, majd felsoroljuk a szomszédait. $x$ DELIMITER1 $x$ D2 $y_1$ D3 $y_2$ D3 \ldots D3 $y_k$ D4. Ezeket az izéket összefűzzük abban a topologikus sorrendben, amelyben a gráf csúcsai adva vannak. Az \Language nyelvben olyan mondatok vannak, amelyekre igaz, hogy az első szó szomszédai között szerepel az utolsó szó: $x$ D2 $y_1$ D3 \ldots $y_l$ \ldots D3 $y_k$ D4, aztán teljes izéből jópár, aztán a végén D4 $y_l$ D1. }
+\hint{ \wrk{Mondani se kell, hogy ez még nincs kész.} A redukció az alábbi sorokból fog állni: A DAG minden $x$ csúcsára leírjuk $x$-et kétszer, majd felsoroljuk a szomszédait. $x$ DELIMITER1 $x$ D2 $y_1$ D3 $y_2$ D3 \dots D3 $y_k$ D4. Ezeket az izéket összefűzzük abban a topologikus sorrendben, amelyben a gráf csúcsai adva vannak. Az \Language nyelvben olyan mondatok vannak, amelyekre igaz, hogy az első szó szomszédai között szerepel az utolsó szó: $x$ D2 $y_1$ D3 \dots $y_l$ \dots D3 $y_k$ D4, aztán teljes izéből jópár, aztán a végén D4 $y_l$ D1. }
 \end{Exercise}
 
 
@@ -622,7 +604,7 @@ $\cl{POLYLOGSPACE} = \bigcup_k \DSPACE(\log^k n)$. Bizonyítsuk be, hogy nem lé
 
 \definition{ $B(f)$-fel jelöljük az $f$-et számító legkisebb Branching Program méretét. $D(f)$-fel jelöljük az $f$-et számító legsekélyebb Branching Program mélységét. }
 
-\definition{ $\la{MAJORITY}(x_1,\ldots,x_n) = \lfloor \sum_i{x_i} / 2 \rfloor$. \wrk{Kicsit faramuci, hogy pont most vezetem be a MAJORITY-t.} }
+\definition{ $\la{MAJORITY}(x_1,\dots,x_n) = \lfloor \sum_i{x_i} / 2 \rfloor$. \wrk{Kicsit faramuci, hogy pont most vezetem be a MAJORITY-t.} }
 
 
 \begin{Exercise}[counter={sorszam}, difficulty=0]
@@ -650,8 +632,8 @@ Nemdeterminisztikus Branching Programnak hívjuk a Branching Program azon által
 \sol{ \wrk{Ezt akkor írom majd le, ha az előzővel, már nagyon elégedett vagyok, mert onnan kezdve nagyrészt copy-paste job.} }
 
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy Annak eldöntése, hogy két Branching Program ugyanazt a függvényt számítja-e ki, pontosan
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+Annak eldöntése, hogy két Branching Program ugyanazt a függvényt számítja-e ki, pontosan
 akkor oldható meg polinomidőben, ha $\P = \NP$.
 \end{Exercise}
 
@@ -735,7 +717,7 @@ Egy véletlen véges automatának van egy szalagja, melynek minden pozíciójár
 \chapter{Polinomiális tár}
 
 \definition{ \la{TQBF} (True Quantified Boolean Formula) Probléma:
-Adott egy \SAT formula az $x_1,\ldots,x_n$ változókkal. Kössük le a változókat
+Adott egy \SAT formula az $x_1,\dots,x_n$ változókkal. Kössük le a változókat
 $\forall$ illetve $\exists$ kvantorokkal. Ezáltal egy úgynevezett Teljesen
 Kvantifikált Boole Formulát kapunk. Egy ilyen formulának nincs szabad
 változója, tehát értéke egyszerűen vagy igaz vagy hamis.
@@ -771,8 +753,8 @@ Ha minden \NP-nehéz nyelv \PSPACE-nehéz is, akkor $\PSPACE=\NP$.
 \end{Exercise}
 
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy Ha létezik \PH-teljes nyelv, akkor összeomlik a polinomiális hierarchia.
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+Ha létezik \PH-teljes nyelv, akkor összeomlik a polinomiális hierarchia.
 \end{Exercise}
 
 \sol{ Tegyük fel, hogy létezik \PH-teljes nyelv, méghozzá a hierarchia $k$-dik szintjén lévő $L$ nyelv. Ekkor a hierarchia magasabb szintjein álló nyelvek visszavezethetőek rá, és \wrk{blabla kezdek teljesen elálmosodni}. }
@@ -817,8 +799,8 @@ tetszőleges $(1/2-c,1/2+c)$ is állhatna, ahol $0<c<1/2$.
 \end{Exercise}
 
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy $\RP \subseteq \NP$. $\RP \subseteq \BPP$. $\cl{co-BPP} = \BPP$.
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+$\RP \subseteq \NP$. $\RP \subseteq \BPP$. $\cl{co-BPP} = \BPP$.
 \end{Exercise}
 
 
@@ -843,8 +825,8 @@ következik, hogy ha \NP része \BPP, akkor $\NP=\RP$. \wrk{Ennek prochat-nak ke
 \end{Exercise}
 
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy Véges test felett vagyunk (bizonyos bonyodalmak elkerülése
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+Véges test felett vagyunk (bizonyos bonyodalmak elkerülése
 végett). Adott három $n \times n$-es mátrix, $A,B,C$. Valaki azt állítja, hogy $AB=C$. Mi
 ellenőrizni akarjuk ezt az állítást, úgy, hogy csak $O(n^2)$ szorzást végzünk,
 de nem törekszünk teljes bizonyosságra: ha $AB \neq C$, akkor
@@ -853,8 +835,8 @@ a feladatra.
 \end{Exercise}
 
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy Adott egy $n$-edfokú polinom, és $n-1$ darab szám (nem feltétlen
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+Adott egy $n$-edfokú polinom, és $n-1$ darab szám (nem feltétlen
 különbözőek). Ellenfelünk most azt állítja, hogy ennek a polinomnak
 multiplicitással éppen ezek a gyökei. Adjunk véletlent használó
 leleplező algoritmust, ami gyorsabb, mint a beszorzáson alapuló
@@ -1188,8 +1170,8 @@ Stratified-nak hívunk egy Boole-hálózatot, ha vagy csupa $AND$, vagy csupa $O
 \end{Exercise}
 
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy Egy nyelv ritka, ha $n$ betűs szavainak száma $poly(n)$. A ritka nyelvek osztályát \SPARSE jelöli. \P-közelinek nevezünk egy \Language nyelvet, ha valamely $\Language' \in \P$ nyelvvel vett szimmetrikus differenciája ritka. \cl{P-close} a \P-közeli nyelvek osztálya. Bizonyítsuk be, hogy \cl{P-close} valódi része \Ppoly-nak.
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+Egy nyelv ritka, ha $n$ betűs szavainak száma $poly(n)$. A ritka nyelvek osztályát \SPARSE jelöli. \P-közelinek nevezünk egy \Language nyelvet, ha valamely $\Language' \in \P$ nyelvvel vett szimmetrikus differenciája ritka. \cl{P-close} a \P-közeli nyelvek osztálya. Bizonyítsuk be, hogy \cl{P-close} valódi része \Ppoly-nak.
 
 \hint{ Része, hiszen a szimmetrikus differencia belekódolható a tanácsba. A tartalmazás valódiságának bizonyításához tekintsük természetes számok egy nemrekurzív $H$ halmazát. Legyen $x \in \Language$ akkor és csakis akkor, ha $|x| \in H$. Ez az \Language nyelv \Ppoly, de nem \cl{P-close}. }
 \end{Exercise}
@@ -1208,8 +1190,8 @@ Létezik olyan nyelv \PH-ban, amely nincs benne $\SIZE(O(n))$ -ben.
 
 \sol{ \wrk{Nem tudom, hogy hol a megoldás, de Kannan-é az eredmény, és írnak róla itt: http://citeseer.ist.psu.edu/594507.html} }
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy Ha $\NP \subseteq \SIZE(O(n))$, akkor $\P \neq \NP$. Használjuk fel Kannan tételét.
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+Ha $\NP \subseteq \SIZE(O(n))$, akkor $\P \neq \NP$. Használjuk fel Kannan tételét.
 \end{Exercise}
 
 
@@ -1451,21 +1433,20 @@ Tudjuk, hogy az egyik játékosnak van $n$ db valóban különböző inputja, az
 
 \chapter{Kolmogorov-bonyolultság}
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy $| K_{Java}(x) - K_{C++}(x) | \leq c_{Java,C++}$. \wrk{Kati szerint pongyola ez a jelölés.}
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+$| K_{Java}(x) - K_{C++}(x) | \leq c_{Java,C++}$. \wrk{Kati szerint pongyola ez a jelölés.}
 
 \hint{ Java nyelven írhatunk C++ interpretert, és C++ nyelven Java interpretert. }
 \end{Exercise}
 
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy $P_{|x|=n}(K(x) \geq |x|-c) \geq 1-1/{2^c}$.
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+$P_{|x|=n}(K(x) \geq |x|-c) \geq 1-1/{2^c}$.
 \end{Exercise}
 
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy Létezik olyan $n$ szám, hogy az $n$-nél nagyobb prímek között nincsenek
-Kolmogorov-véletlenek.
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+Létezik olyan $n$ szám, hogy az $n$-nél nagyobb prímek között nincsenek Kolmogorov-véletlenek.
 
 \hint{ Létezik olyan algoritmus, amely a $k$ bemenetre kiírja a $k$. prímszámot. }
 \end{Exercise}
@@ -1473,8 +1454,8 @@ Kolmogorov-véletlenek.
 \sol{ A Prímszámtétel szerint egy tetszőleges $p$ prímszám legfeljebb a $\frac {9p} {8 \log p}$-edik a prímszámok sorában. Rögzítsünk egy olyan algoritmust, amely a $k$ bemenetre kiírja a $k$. prímszámot. (Például Erasztotenész szitáját implementálva.) A $k$ bemenetet a programba konstansként beledrótozva olyan algoritmust kapunk, amely $\log k+const$ méretű. Így egy legfeljebb $\log{\frac {9p} {8 \log p}}+const$ méretű algoritmust kaptunk tetszőleges rögzített $p$ prím kiírására. Elegendően nagy $p$ esetén ez a mennyiség kisebb lesz, mint $\log p-const$, amiből következik a bizonyítandó állítás. }
 
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy Létezik olyan $n$ szám, hogy a $\pi$ $n$-nél hosszabb kettes számrendszerbeli
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+Létezik olyan $n$ szám, hogy a $\pi$ $n$-nél hosszabb kettes számrendszerbeli
 közelítései között nincsenek Kolmogorov-véletlenek.
 
 \hint{ Létezik olyan algoritmus, amely a $k$ bemenetre kiírja $\pi$ első $k$ számjegyét. }
@@ -1536,8 +1517,8 @@ közül melyik valósul meg. Ennek a kódolásnak a hossza $O(\log |x|) + O(\log
 \definition{ Elegánsnak hívunk egy programot, ha ő a legrövidebb azok közül, akik
 az ő kimenetét adják. (Esetleg holtversenyben.) }
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy Minden elegáns program Kolmogorov-véletlen.
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+Minden elegáns program Kolmogorov-véletlen.
 \end{Exercise}
 
 \sol{ Ha konstansnál több bitet tömöríthetünk egy programon, akkor a tömörített változatát kitömörítő majd lefuttató
@@ -1576,11 +1557,11 @@ Egy $n$ szám $m$ modulus szerint vett $t$-edik hatványát ki tudjuk számolni 
 (Mindhárom bemenet kettes számrendszerben van megadva.)
 \end{Exercise}
 
-\sol{ Egy $n$ szám $m$ modulus szerint vett négyzetét természetesen ki tudjuk számolni polinomidőben. A négyzetre emelés műveletét ismételgetve a negyedik, nyolcadik, stb. hatványát is ki tudjuk számolni polinomidőben, amíg a négyzetre emelések összes száma polinomiális. $t$ kettes számrendszerbeli felírása legyen $2^{i_1}+\ldots+2^{i_k}$. Ez alapján $n^t = n^{2^{i_1}+\ldots+2^{i_k}} = \prod_l{n^{2^{i_l}}}$. Ennek a szorzatnak minden tényezője kiszámolható polinomidőben, és összesen polinomiális számúan vannak. }
+\sol{ Egy $n$ szám $m$ modulus szerint vett négyzetét természetesen ki tudjuk számolni polinomidőben. A négyzetre emelés műveletét ismételgetve a negyedik, nyolcadik, stb. hatványát is ki tudjuk számolni polinomidőben, amíg a négyzetre emelések összes száma polinomiális. $t$ kettes számrendszerbeli felírása legyen $2^{i_1}+\dots+2^{i_k}$. Ez alapján $n^t = n^{2^{i_1}+\dots+2^{i_k}} = \prod_l{n^{2^{i_l}}}$. Ennek a szorzatnak minden tényezője kiszámolható polinomidőben, és összesen polinomiális számúan vannak. }
 
 
-\begin{Exercise}[counter={sorszam}, difficulty=0]
-\easy Egy $n$ szám $t$-edik hatványát nem tudjuk kiszámolni polinomidőben az egészek között.
+\begin{Exercise}[counter={sorszam}, difficulty=-1]
+Egy $n$ szám $t$-edik hatványát nem tudjuk kiszámolni polinomidőben az egészek között.
 \end{Exercise}
 
 
