@@ -1,0 +1,1296 @@
+
+\chapter{TeXelés}
+
+\sectionstart
+
+\prochat{
+Elkezdtem véglegesen megoldani a nehéz laTeX problémát, hogy három különböző környezetben háromszor inkludálom a complexity.txt-t, és először csak feladatokat, aztán csak hinteket, aztán feladatokat és megoldásokat szeretnék látni, persze azonos számozással.
+
+Egy compactForm nevű boolean beállításától függ, hogy ezt a háromszoros, bőbeszédű, végleges változatot fordítja le, vagy egy tömör, javítgatáshoz sokkal praktikusabb változatot.
+
+Ismert hibák: A \hard hülyén eltávolodott a feladat sorszámától. Teljesen átnézendő, hogy mi és mi között mennyi vspace-nek kellene lennie, és most mennyi van ehelyett. Ha többet segítek, akkor azok azonos feladatszámot kapnak. (Ne segítsek többet.) Ha egy feladatnak több részfeladata van, akkor az (a) legyen egy sorban a feladat számával.
+
+Az index-szel még egyáltalán semmit sem csináltam, pedig biztos ez is felveti majd a saját problémáit. A tételjegyzékről és a referenciákról még el sem döntöttem, hogy lesz-e, és hogyan.
+
+Jelenleg lustaságból azok a fejezetek is megháromszorozódnak, amiknek nem kellene. Ki lehet ezt javítani új fájl bevezetése és a framecode megterhelése nélkül? Persze az új fájl bevezetése még jó is lehet: Ez lenne a self-documentation.
+
+A nyelvosztályokra készített makróm csúnyán bánik a kötőjelekkel: A legcsúnyább a \coNP, és pár másik co-, rájuk kell keresni. Bezzeg a \la{co-NP}-vel semmi baj.
+
+Az \ldots a tuti ellipszis?
+
+Az $\overline{x_i}$ nem szép. Hogy csinálják ezt rendesen?
+
+Rajtam kívül mindenki {\cl{\Sigma^p_2}}-val jelöli \Sigmatwo-t. És a p-t dőlt betűvel szokták írni.
+
+}
+
+\sectionend
+
+%------------------------------
+
+\chapter{Szándékok}
+
+\sectionstart
+
+\prochat{
+Három részből áll a könyv. Feladatok-segítségek-megoldások. A megoldásos résznél megismételjük a feladat szövegét, a segítségesnél nem. Valami okosat ki kellene találni arra a helyzetre, amikor többször is akarok segíteni egy feladathoz. Lehet, hogy szélességi bejárás szerint sorolom fel a hinteket, és oda-vissza keresztreferenciákat teszek rájuk? Na ehhez komoly laTeX guru kellhet.
+
+Kati szerint több segítés helyett mégiscsak legyen feladatra bontás. Az emelletti érvek teljesen agyonnyomják az én ösztönös averziómat.
+
+Kati szerint legyen egy Jelölések fejezet, meg egy ,,felhasznált tételek'' fejezet.
+
+A Feladatok számozása a tételek szokásos számozásával azonos, fejezetszám.sorszám formában. A Definíciókat nem számozzuk. Lehetségesek továbbá a feladatok közti összekötő szövegek és kommentárok, (prochat és solchat parancs), de ezzel az eszközzel ritkán fogok élni.
+
+A feladatok állítását tipikusan csak kijelentjük, ,,Bizonyítsuk be, hogy\ldots'' jellegű előtagokat nem használva. Eddig ettől az elvtől eltértem ott, ahol az előző mondatban egyszerhasználatos definíciót vezettem be, és így akartam megkülönböztetni a két kijelentő mondat szemantikáját. Például: \la{DOUBLE-SAT} a legalább két különböző kielégítéssel rendelkező Boole-formulák
+osztálya. Bizonyítsuk be, hogy \la{DOUBLE-SAT} \NP-teljes.
+
+A feladatok négy nehézségi szintbe vannak sorolva: \easy : könnyű, definíció megértését ellenőrző. Az alap, ami nincs külön jelölve. \hard : nehéz. \veryhard : nagyon nehéz. Mindet át kell nézni, de a könnyű az, amit utólag vezettem be, és ezért még általában nincs kitéve.
+
+Kati szerint az az állítás, amire egy közepes vagy gyengébb képességű hallgató visszakérdezne, leírandó, hiszen itt nincs mód a visszakérdezésre.
+
+A feladatok megoldásában nem hivatkozhatok a hintekben bevezetett fogalmakra és állításokra. A megoldások és hintek nem hivatkozhatnak más feladatoknak semmijére sem, beleértve a kitűzést is. Kati szerint hivatkozhassunk a feladatokra. A megoldásokban a korábbi feladatok kimondott állításait használhatnánk, meg például kijelenthetnénk, ha két feladat között valami viszonyulás van (alsó becslés-felső becslés).
+
+Ha az állítás valakinek a tétele (Borogyin, Kannan), akkor azt illene odaírni.
+
+A használt fogalmak közül azokra lesz definíció, amelyek nem szerepelnek a Lovászban. A jelölések ahol lehet, hozzá igazítandóak.
+
+A könnyebb kérdések válaszait kicsit részletesebben, pedánsabban írjuk le. Ez egyrészt azért célszerű, mert gyakran nem pontosan ugyanannak a közönségnek lesznek feladva. Másrészt vannak olyan technikai bonyodalmak, amelyeknek a részletes feldolgozása egy nehéz feladat fókuszáról elvonná a figyelmet, de egy könnyűnél a nagyvonalú elhanyagolásuk triviálissá tenné a feladatot. (A Kolmogorov-bonyolultság fejezetben még így is szőnyeg alá söpörtük a prefix kódolás kérdését.)
+
+A \LOGSPACE versus \NL jelölés következetlen, de az \Language gyakori használata indokolttá teszi. A gyakori ,,adjunk \LOGSPACE algoritmust'' mondatséma miatt sem lenne triviális javítani.
+
+Bele kellene írni, hogy minden $\log n$ kettő alapú.
+
+Rögzíteni kellene, hogy a Boole-függvények tárgyalásakor a 0-t a hamis, az 1-et az igaz szinonímájaként használom, akár mondat közben is szemrebbenés nélkül váltogatva a két jelölést.
+
+Katiék könyvében a definíció vizuálisan kiemelkedik (egy kis krikszkraksszal.)
+
+A definíciókban a definiált szó legyen dőlt betűs (vagy félkövér?).
+
+Kéne bele párhuzamos bonyolultságelmélet.
+}
+
+\sectionend
+
+%------------------------------
+
+\chapter{Bevezetés}
+
+\wrk{Megírni.}
+
+%------------------------------
+
+\chapter{Döntési fák}
+\sectionstart
+
+\pro{ A ,,körmentesség'' gráftulajdonság zárkózott. \wrk{Valahogy le kell szögezni, hogy ez és a következő iksz feladat mind irányítatlan gráfra vonatkozik. Lehet, hogy majd mindegyikbe beleírom, hogy ,,Az X irányítatlan gráftulajdonság zárkózott'', de valószínűleg nem ez a tuti megoldás.} }
+
+\hint{ \wrk{Le kell írni, hogy mi az az ördög-módszer? Kati szerint igen, legalábbis informálisan. Ha a textbookban nincsen leírva, akkor pontosabban.} Egy megfelelő ördög-algoritmus a következő: Csak akkor válaszolunk nemmel egy él behúzottságát firtató kérdésre, ha az ,,igen'' válasz után már minden szóbajöhető gráfban lenne kör. (Azaz igyekszünk igennel válaszolni, de kerüljük, hogy kör jöjjön létre az igennel megválaszolt élekből.) }
+
+\sol{ \wrk{Nem hivatkozhatunk a hintre. Másoljuk be, ha már stabilizálódott.} Stratégiánk miatt a párbeszéd legvégén kapott gráf mindenképpen körmentes lesz. Legyen $(u,v)$ az az él, amit utoljára, $\binom{n}{2}$-edikként \wrk{Használjuk azt, hogy nem lett vége hamarabb?} kérdezett meg a kérdező. Ördög-stratégiánk sikere azt jelenti, hogy a gráf körmentessége függ attól, hogy ez az él be van húzva vagy sem. Tegyük fel indirekt módon, hogy a gráf az utolsó $(u,v)$ él behúzásával is körmentes. Ekkor $(u,v)$ elvágó él. Tekintsük az $(u,v)$ elhagyásával szétváló két komponens között haladó tetszőleges $(u,v)$-tól különböző $(w,z)$ csúcspárt. \wrk{, ami nem-él. Miért nem lehet a két komponens egy-egy elemű?} Könnyen látható, hogy $(w,z)$ megkérdezésének pillanatában a behúzása nem befolyásolja az igennel megválaszolt élek gráfjának körmentességét. Ez azonban stratégiánk miatt ellentmondásban van azzal, hogy a $(w,z)$ él behúzottságára nemmel válaszoltunk. }
+
+\pro{ Az ,,összefüggőség'' gráftulajdonság zárkózott. }
+
+\hint{ Az ördög-algoritmus legyen a következő: Csak akkor válaszolunk igennel, ha a ,,nem'' válasz után már egyetlen gráf sem lenne összefüggő a szóbajöhetőek közül. (Azaz igyekszünk nemmel válaszolni, de vigyázunk arra, hogy a már behúzott és a még megkérdezetlen élek együtt összefüggő gráfot alkossanak. }
+
+\sol{ \wrk{Nem hivatkozhatunk a hintre. Másoljuk be, ha már stabilizálódott.} Stratégiánk miatt a párbeszéd legvégén kapott gráf mindenképpen összefüggő lesz. Legyen $(u,v)$ az az él, amit utoljára, $\binom{n}{2}$-edikként \wrk{Használjuk azt, hogy nem lett vége hamarabb?} kérdezett meg a kérdező. Ördög-stratégiánk sikere azt jelenti, hogy a gráf összefüggősége függ attól, hogy ez az él be van húzva, vagy sem. Tegyük fel indirekt módon, hogy a gráf az utolsó $(u,v)$ él nélkül is összefüggő. Ekkor $u$ és $v$ között létezik $P$ út. Válasszuk ki ennek az útnak egy tetszőleges $(w,z)$ élét. $(u,v)$ és az út többi éle olyan utat alkot $w$ és $z$ között, amely $(w,z)$ behúzásának pillanatában csupa behúzott vagy megkérdezetlen élből áll. Ebből könnyen következik, hogy $(w,z)$ behúzása nem befolyásolja a már behúzott és a még megkérdezetlen élek együttes gráfjának összefüggőségét. Ez azonban stratégiánk miatt ellentmondásban van azzal, hogy a $(w,z)$ él behúzottságára igennel válaszoltunk. }
+
+\pro{ \veryhard A ,,van izolált pontja'' gráftulajdonság zárkózott.}
+
+\sol{ \wrk{A Gács-Lovász 58-59. oldalán. Nagyon nehéz. (Kati szerint nem nagy ötlet a második feladatot nagyon nehézre venni.) Az az ötlete, hogy páratlan sok gráf jöjjön szóba minden pillanatban, és mindig azt a választ adjuk, ami ezt a tulajdonságot megőrzi.} }
+
+\pro{ A ,,feszítőfa'' gráftulajdonság zárkózott. }
+
+\pro{ A ,,kétszeresen összefüggő'' gráftulajdonság zárkózott. }
+
+\pro{ A ,,legalább k-élű erdő'' gráftulajdonság zárkózott. }
+
+\pro{ Skorpió-gráfnak hívjuk az alábbi felépítésű $n$ csúcsú irányítatlan gráfokat: A gráfnak van egy egy fokú csúcsa (fullánk), amely szomszédos egy kettő fokú csúccsal (farok), amely szomszédos egy olyan csúccsal (test), amely a gráf további $n-3$ csúcsával (lábak) is szomszédos. (Tehát a test a fullánk kivételével az összes csúccsal szomszédos.) A lábak által feszített részgráfról nem kötünk ki semmit. \wrk{Ábra.} Bizonyítsuk be, hogy egy gráfról $6n$ él lekérdezésével megállapítható, hogy skorpió-gráf-e. (n a csúcsok száma.) }
+
+\hint{ \wrk{http://www.cse.nd.edu/courses/cse511/www/solution1.pdf és http://www.cse.iitd.ernet.in/~sbaswana/Puzzles/Algo/algo.html\#Scorpio} }
+
+\pro{ Adott $n$ darab különböző szám. Feladatunk kiválasztani a legkisebbet és a
+legnagyobbat egyszerre. Hány összehasonlításra van ehhez szükség?
+
+\begin{enumerate}
+  \item Megoldható $\left \lceil \frac{3n}{2} \right \rceil - 2$ összehasonlítással.
+  \item \hard Ennyire szükség is van.
+\end{enumerate}
+}
+
+\sol{ A felső becsléshez először osszuk párokba a számokat, és hasonlítsuk össze a párok két tagját. Ez $\lfloor n/2 \rfloor$ összehasonlítás. Ezek után már csak a ,,győztesek'' (nagyobbak) között keressük a legnagyobbat, és a ,,vesztesek'' között a legkisebbet. Mindkét részfeladat $\lceil n/2 \rceil-1$ összehasonlítást igényel.
+
+Az alsó becsléshez nevezzük nagyoknak azokat a számokat, amelyek az első összehasonlításuk alkalmával nagyobbnak lettek minősítve. A kicsik fogalmát analóg módon definiáljuk. Semmilyennek nevezzünk azokat a számokat, amelyek az algoritmus lefutásának adott pillanatában még egyszer sem lettek összehasonlítva másik számmal. Az alsó becsléshez a következő ördög-módszert alkalmazzuk: Ha egy nagyot és egy nem nagyot összehasonlítanunk, akkor jelöljük meg a nagyot nagyobbnak. Analóg módon járjunk el a kicsikkel is. Ha két semmilyet kell összehasonlítanunk, akkor természetesen tetszőlegesen dönthetünk. Ha két nagyot vagy két kicsit kell egymással összehasonlítanunk, akkor válaszoljunk tetszés szerint, de úgy, hogy ne kerüljünk ellentmondásba az addigi összehasonlításainkkal. (Más szóval az elvégzett összehasonlítások által meghatározott irányított gráfban ne jöjjön létre irányított kör. Ezt mindig megtehetjük, mert egy DAG-ba új élet behúzva az új él irányítható úgy, hogy a gráf DAG maradjon.)
+
+Az algoritmus futásának végére minden szám vagy nagy vagy kicsi lesz, hiszen a semmilyenekről nem tudhatnánk, hogy nem ők-e a legnagyobbak. A nagyok halmazán az összehasonlítások gráfja összefüggő, mert ha lenne két komponense, akkor akkor azok tetszőlegesen lennének rendezhetőek egymáshoz képest. Hasonló állítás igaz a kicsikre is. Ez legalább $n-2$ összehasonlítást jelent azonos kategóriájúak között. Ehhez jön a nagyok és kicsik között haladó összehasonlítások száma. Minden szám átesett legalább egy ilyenfajta összehasonlításon, hiszen a legelső összehasonlítása mindenképpen ilyen típusú volt. Tehát az ilyen összehasonlítások számára alsó becslés a két halmaz közül a nagyobbiknak a mérete, ami legalább $\lceil n/2 \rceil$.
+}
+
+\pro{ Legfeljebb $2n-2- \lfloor \log n \rfloor$ kérdéssel eldönthető, hogy egy $n$ résztvevős turnamentben van-e olyan játékos, aki az összes többit legyőzte (abszolút győztes).
+
+\wrk{Zolinak nem tetszik a turnament szó? Vagy definiálni akarja?}
+}
+
+\sol{ Először tartsunk egy $\lceil \log n \rceil$ fordulóból és $n-1$ mérkőzésből álló standard kieséses bajnokságot. Ennek az egyértelműen létező győztese az egyetlen szóbajöhető jelölt abszolút győztesnek. Játsszon mindenkivel, akivel a kieséses bajnokság során még nem játszott.}
+
+\pro{ \veryhard Az előző feladatban adott korlát optimális. }
+
+\hint{ Képzeljük el az algoritmus lefolyását úgy, hogy bajnokságot bonyolítunk le. Nevezzük valódinak azokat a mérkőzéseket, amelyek a mérkőzés megkezdéséig veretlenek között zajlottak. Vizsgáljuk a győztes által lejátszott valódi mérkőzések számát. }
+
+\hint{ Ördög-módszerünk legyen a következő: Egy veretlen és egy nem veretlen közötti mérkőzésen győzzön a veretlen. Két veretlen közti mérkőzésen győzzön az, akinek kevesebb valódi mérkőzése van. }
+
+\sol{ \wrk{Ide be kell egerezni a hinteket.} Az ördög-módszerünk alkalmazása során mindig marad legyőzetlen játékos, tehát a párbeszéd végén kapott turnamentben van abszolút győztes. $k$ szerinti teljes indukcióval bizonyítható, hogy mire egy játékos $k$ valódi játszmát megnyert, addigra ő és az általa addig kiejtettek összesen legalább $2^k-1$ valódi mérkőzést lejátszottak. A valódi mérkőzések összes száma $n-1$. Az abszolút győztes tehát legfeljebb $\lfloor \log n \rfloor$ valódi játszmát játszott. Mindenkit megvert, tehát pontosan $n-1$ (nem feltétlenül valódi) mérkőzést játszott. Ez az összes valódi mérkőzésekkel együtt már legalább $(n-1)+(n-1)-\lfloor \log n \rfloor$ játszma. }
+
+\sectionend
+
+%------------------------------
+
+\chapter{NP-teljesség}
+\sectionstart
+
+\prochat{
+Teljesség-visszavezetés. Ez többféle ismérv szerint is tovább finomítható: Egy kitüremkedő része a \SAT-környéki feladatok. A Friedl-gyűjteményben erősen képviselt a fázisátmenet témája, tehát az olyan feladatpárok, ahol egy feladat \NP-teljessége után egy hasonló feladat \P-beliségét kell megmutatni.
+}
+
+\pro{ \easy Ha az \Language nyelv \NP-teljes, akkor az $\Language' = \{ xx : x \in \Language \}$ nyelv is az. }
+
+\sol{ Ha \Language \NP-beli, akkor \Language' is az: a $xx$ szó tanúi legyenek az $x$ szó \Language-beliségének tanúi. (Nem ilyen alakú szavakra ne létezzen tanú. \wrk{Kati szerint ez pongyola. Világossá kell tenni, hogy most definiáltam egy nyelvet.}) Ha \Language \NP-nehéz, akkor \Language' is az: A visszavezetés \Language-ről \Language'-re egyszerűen a megkettőzés művelete. }
+
+\pro{ Egy $A$ halmaz nyesi a $\mathcal{H}$ halmazrendszert, ha annak
+minden $H$ elemére $H \cap A$ nemüres és $H \cap \overline{A}$ sem
+üres. \la{SET-SPLITTING}-nek nevezzük azt a kérdést, hogy adott halmazrendszerhez
+létezik-e nyeső halmaz. \la{SET-SPLITTING} \NP-teljes. \wrk{Csúnya ez az overline.} }
+
+\hint{ Vezessük vissza \la{SET-SPLITTING}-re a \SAT feladatot. A literálokat vegyük fel az alaphalmaz elemeinek. }
+
+\sol{ Vezessük vissza \la{SET-SPLITTING}-re a \SAT feladatot. Az alaphalmaz álljon a literálokból, és egy kitüntetett $0$ elemből. Minden $i$-re vegyük be $\mathcal{H}$-ba a kételemű $\{x_i,\overline{x_i}\}$ halmazt. Minden $C$ klózra vegyük be $\mathcal{H}$-ba a $C \cup \{0\}$ halmazt. Könnyen látható, hogy a normálforma kielégítései kölcsönösen egyértelműen megfeleltethetők $\mathcal{H}$ nyeső halmazainak: Egy adott kielégítéshez tartozó nyeső halmaz legyen az igaz literálok halmaza, és fordítva, egy $A \cup \overline{A}, 0 \in \overline{A} $ nyeső partícióhoz válasszuk igaznak az $A$ elemeit. }
+
+\definition{ \la{SAT-\mbox{$k$}} azon kielégíthető konjunktív normálformák
+nyelve, amelyekben minden változó legfeljebb $k$ literálban fordul elő. }
+
+\definition{ \la{\mbox{$k$}-SAT} azon kielégíthető konjunktív normálformák
+nyelve, amelyekben minden klóz (clause) legfeljebb $k$-elemű. }
+
+\pro{ \la{SAT-3} \NP-teljes. }
+
+\hint{ Egy háromnál többször előforduló változó előfordulásaihoz vegyünk fel új változókat, és alkalmas CNF \wrk{valahol írni kellene, hogy így hívom a konjunktív normálformát, vagy pedig ki kellene írni} segítségével biztosítsuk, hogy ezek egyenlőek legyenek egymással. }
+
+\sol{ Egy konjunktív normálformát a kielégíthetősége megváltoztatása nélkül \la{SAT-3} alakra hozunk. Ehhez minden egyes háromnál többször előforduló változóját kiküszöböljük, az alábbi módon: Tegyük fel, hogy az $x$ változó (tagadásait is beleértve) $k$ alkalommal szerepel. Vegyük fel az új $x_1,\ldots,x_k$ változókat, és rendre cseréljük le $x$ előfordulásait ezekre. Ezek után azt kell garantálnunk, hogy az $x_i$ változók minden kielégítésben egyenlőek, amit az alábbi klózok hozzáadásával elérhetünk: $ x_1 \vee \overline{x_2}, \ldots, x_{k-1} \vee \overline{x_k}, x_k \vee \overline{x_1} $. Az új $x_i$ változók mindegyike pontosan háromszor szerepel az új formulában. }
+
+\pro{ \easy \la{SAT-2} \P-beli. }
+
+\sol{ Ha egy változó mindkét előfordulása állító, vagy mindkettő tagadó, akkor mindkét klózát kielégíthetjük a változó értékének alkalmas megválasztásával. Ha különböző előjelűek, és azonos klózban fordulnak elő, akkor a klóz kielégíthető. Ha az előfordulások különböző előjelűek, és különböző klózban fordulnak elő, akkor a két klózt összevonhatjuk, pontosabban mondva a $(C \vee x) \wedge (D \vee \overline{x})$ részformula helyettesíthető a $C \vee D$ klózzal úgy, hogy a normálforma kielégíthetősége nem változik. Ezt a redukciós lépést csak akkor nem tudjuk elvégezni, ha $C$ és $D$ üresek, azaz a $x \wedge \overline{x}$ részformulával találkoztunk. Ebben az esetben a normálforma nem kielégíthető. }
+
+\pro{ \la{2-SAT} \P-beli. }
+
+\sol{ Minden kételemű klóz felírható literálok közti implikáció formájában. Ezek az implikációk egy irányított gráfot hoznak létre a literálok csúcshalmazán. (A kontrapozíció két ekvivalens implikációt ad, mindkét megfelelő élet húzzuk be.)
+
+Az algoritmus ismertetése előtt tárjuk fel ennek a gráfnak néhány tulajdonságát: A gráf tranzitív lezártja olyan implikációkat tartalmaz, amelyek logikailag következnek az eredetiekből. Nem okvetlenül körmentes gráfról lévén szó, a tranzitív lezártban előfordulhatnak oda-vissza irányított párhuzamos élek. \wrk {Van ezeknek nevük?} Egy ilyen kettő hosszú kör a két literál értékének azonosságát kényszeríti ki. Ha egy változó és a tagadása között kör halad, akkor a formula nem kielégíthető. Ennek az állításnak a megfordítása is igaz: Ha a tranzitív lezártban nincsen literál és tagadása között haladó kettő hosszú kör, akkor a formula kielégíthető. \wrk{Ennek bizonyításához valami olyasféle állítás kell, mint a DAG-ok toprendezhetősége, csak most megengedünk klasztereket, ha nincs bennük változó és tagadása. A legegyszerűbb valószínűleg reprodukálni a toprendezhetőség bizonyítását:} Tegyük fel, hogy a tranzitív lezártban egy változó két literálja között semelyik irányban nem megy él. Húzzuk be valamelyiket önkényesen, és végezzük el újra a tranzitív lezárást. Állítjuk, hogy ennek során nem keletkezett rossz hurok. \wrk{Ezt még nem bizonyítottuk.} A lépést ismételve végül minden literálpárok közti él be lesz húzva vagy az egyik, vagy másik irányban, ami kielégítését adja a formulának, hiszen a kiindulási implikáció-gráf továbbra is részgráfja a végül kapottnak. \wrk{Kati szerint ne spóroljam meg azt a kis mondatot, hogy a turnamentből hogyan kapok kielégítést.}
+
+A fenti diszkusszió után maga a kielégíthetőséget eldöntő algoritmus már egyszerűen megadható: Határozzuk meg az implikációk gráfjának tranzitív lezártját, és vizsgáljuk meg, hogy van-e benne változó és a tagadása között haladó hurok.
+
+\wrk{Ha használhatnám az erősen összefüggő komponens, és az aszerinti redukált DAG fogalmát, akkor minden sokkal tisztább lenne.}
+
+Második megoldás, lehet, hogy kevésbé elegáns, de legalább már le van írva:
+
+Keressünk a gráfban topologikus rendezést \wrk{valamilyen lehivatkozott klasszikus algoritmussal}. Ha nincsen irányított kör a gráfban, akkor létezik topologikus rendezés, és ez alapján a formula kielégíthető: Az $x_i$ változó értéke legyen igaz akkor és csakis akkor, ha a topologikus rendezésben az $x_i$ literál előbb szerepel, mint az $\overline{x_i}$.
+
+Ha létezik irányított kör, akkor a rajta szereplő literálok értéke szükségszerűen egyenlő. Ha a körön valamely literál és komplementere egyszerre szerepel, akkor a formula nem elégíthető ki. Ha nincs ilyen pár, akkor a kör (és a megfelelő komplementerekből álló szimmetrikus párja) összehúzható egyetlen új literállá. Ezt az eljárást ismételgetve a gráf csúcsainak száma csökken, és előbb-utóbb találni fogunk egy kielégítést, vagy a kielégíthetetlenség bizonyítékát.
+}
+
+\pro{ Az alábbi probléma \NP-teljes: Természetes számok egy multihalmaza két részre osztható-e
+,,igazságosan'', azaz úgy, hogy az egyes részhalmazok összegzése egyenlő legyen?
+\wrk{Azért illene megmondani, hogy miről vezetünk vissza. http://web.njit.edu/~marvin/cis341/hwsoln13.pdf} }
+
+\pro{ \easy Adjunk polinomiális algoritmust egy diszjunktív normálforma kielégíthetőségének eldöntésére. }
+
+\hint{ Keressünk kielégíthető klózt. }
+
+\pro{ \easy Jelölje \la{DOUBLE-SAT} a legalább két különböző kielégítéssel rendelkező konjunktív
+normálformák nyelvét. Bizonyítsuk be, hogy \la{DOUBLE-SAT} \NP-teljes. }
+
+\sol{ Az \NP-beliség nyilvánvaló. \SAT-ot vezetjük vissza a feladatra. A visszavezetés egyszerűen álljon abból, hogy felveszünk
+egy új $y$ változót, és ahhoz egy új $(y \vee \overline{y})$ klózt. Ennek a formulának pontosan
+akkor létezik legalább két kielégítése, ha az eredetinek létezik kielégítése. }
+
+\pro{ Jelölje \la{HALF-CLIQUE} azon gráfok nyelvét, amelyeknek létezik legalább feleakkora klikkjük, mint amekkora
+a csúcsszámuk. Bizonyítsuk be, hogy \la{HALF-CLIQUE} \NP-teljes. }
+
+\sol{ Az \NP-beliség nyilvánvaló. A klasszikus ,,Van-e $G$-nek legalább $k$ méretű klikkje?'' feladatot vezetjük vissza. A leképezés egy $(G,k))$ párról a következő legyen: Ha $k<n/2$ ($n=|V(G)|$), akkor a gráfot egészítsük ki $n-2k$ csúccsal, amelyeket egymással és $G$ összes eredeti csúcsával összekötünk. Ha $k \geq n/2$, akkor a gráfot egészítsük ki $2k-n$ izolált csúccsal. A két esetről külön-külön bizonyítjuk, hogy megfelelő leképezés. A $k<n/2$ esetben egy $2n-2k$ csúcsú $G'$ gráfot kapunk, amelynek az $n-k$ méretű klikkjei kölcsönösen egyértelműen megfeleltethetőek $G$ $k$ méretű klikkjeinek. Ha $k \geq n/2$, akkor egy $2k$ csúcsú gráfot kapunk, amelynek $k$ méretű klikkjei kölcsönösen egyértelműen megfeleltethetőek $G$ $k$ méretű klikkjeinek. }
+
+\pro{ \easy A lineáris időben kiszámítható Karp-redukcióra nézve nem létezik \P-teljes nyelv. }
+
+\sol{ Tegyük fel, hogy létezik ilyen \Language nyelv. Az, hogy \Language \P-ben van, azt jelenti, hogy $\DTIME(n^k)$-ban van valamilyen rögzített $k$-ra. Válasszunk egy tetszőleges $\Language'$ nyelvet $\DTIME(n^{k+1})$-ből. \Language \P-teljessége azt jelenti, hogy $\Language'$-re adható egy olyan eldöntési algoritmus, amely először alkalmaz egy lineáris idejű Karp-redukciót a bemenetre, amelynek eredménye legyen az $x$ szó, aztán $x$ \Language-beliségét eldönti $O({|x|}^k)$ időben. A Karp-redukció linearitása miatt $|x|=O(n)$, tehát az algoritmus teljes futásideje $O(n^k)$, azaz $\Language'$ benne van $\DTIME(n^k)$-ban. Ezzel beláttuk, hogy $\DTIME(n^{k+1})=\DTIME(n^k)$, ami ellentmond az Időhierarchia-tételnek. Az ellentmondás bizonyítja, hogy nem létezik a feltételnek megfelelő \Language nyelv. }
+
+\pro{ \hard \la{UNIQUE-SAT}-nak nevezzük azon konjunktív normálformák nyelvét, amelyeknek egy és csakis egy kielégítésük van.
+Bizonyítsuk be, hogy ha \la{UNIQUE-SAT} eleme \NP, akkor $\NP = \coNP$. }
+
+\hint{ Vezessük vissza $\overline{\la{SAT}}$-ot \la{UNIQUE-SAT}-ra. Ha \la{UNIQUE-SAT} \NP-beli és \coNP-teljes, akkor $\NP = \coNP$. }
+
+\sol{ Vezessük vissza $\overline{\la{SAT}}$-ot \la{UNIQUE-SAT}-ra. $\overline{\la{SAT}}$ \coNP-teljességéből már következik a bizonyítandó állítás. Legyen $F(x_1,\ldots,x_n)$ a konjunktív normálforma, amelynek a kielégíthetetlenségét kell eldöntenünk. A visszavezetés legyen a következő: Vezessünk be egy új $x_0$ változót, és konstuáljuk meg $F$-ből a következő $F'$ formulát:
+$$(x_1 \rightarrow F) \wedge ... \wedge (x_n \rightarrow F) \wedge (x_0 \rightarrow F).$$
+
+Ha $F$ nem kielégíthető, akkor $F'$-nek pontosan egyetlen kielégítése van, a csupa hamis értékadás. Ha $F$ kielégíthető, akkor $F'$-t a csupa hamis értékadáson kívül még kielégíti az $F$ bármelyik kielégítése, méghozzá az $x_0$ mindkét választása mellett. A visszavezetés alkalmasságát beláttuk, de a megadott $F'$ formula nem konjunktív normálformájú. A megoldás befejezéséhez megmutatjuk, hogy $F'$ ekvivalens módon konjunktív normálformára hozható. Álljon $F$ a $C_1,\ldots,C_k$ klózokból. Ekkor
+
+$$F' \equiv \bigwedge_{i=0}^{n}{\bigwedge_{j=1}^{k}{\overline{x_i} \vee C_j}}.$$
+
+Ez a formula már konjunktív normálformában van, és hatékonyan előállítható az $F$ bemenet alapján. }
+
+% \wrk{http://www.cs.unm.edu/~moret/computation/7/45.html -ből van, de nekem úgy tűnik, hogy a fura esetszétválasztás a megoldás elején teljesen értelmetlen és felesleges. Így írtam le: Ha az $F$ minden változóját igazra állító behelyettesítés igazzá teszi $F$-et, akkor $F$ nincs $\overline{\la{SAT}}$-ban, és képezzük egy tetszőleges rögzített \la{UNIQUE-SAT}-on kívüli instanciára.}
+
+\pro{ \wrk{Friedl 9.11.} Tegyük fel, hogy van egy polinomidejű eljárásunk, amely a kettes számrendszerben ábrázolt $m,n$ bemenetekre megadja $m!$ értékét modulo $n$. Ezt felhasználva adjunk polinomidejű módszert természetes számok prímtényezőkre bontására. }
+
+\pro{ \easy \wrk{Friedl 9.13.} Pontos 3-fedésnek (exact 3-cover, \la{X3C}) hívjuk annak eldöntését, hogy egy háromelemű halmazokból álló halmazrendszernek létezik-e olyan részhalmazrendszere, amely partíció. Abból a feltételezésből kiindulva, hogy az \la{X3C} eldöntési feladat megoldására létezik polinomidejű eljárásunk, adjunk olyan eljárást, amely polinomidőben megoldja az \la{X3C} keresési feladatot, azaz adott halmazrendszerhez megkeresi a megfelelő partíciót, ha az létezik. }
+
+\pro{ \wrk{Friedl 9.22.} A ,,Van-e $G$-ben legalább $|V(G)|-2$ élhosszú egyszerű út?'' feladat \NP-teljes. }
+
+\pro{ \wrk{Friedl 9.19.} Adjunk \PSPACE-beli algoritmust, amely egy $G$ páros gráfról eldönti, hogy teljes párosításainak száma pontosan egyenlő-e a bemenetként adott $k$ természetes számmal. }
+
+\pro{ \wrk{Friedl 9.24.} Adjunk polinomiális algoritmust, amely egy $G$ páros gráfról eldönti, hogy teljes párosításainak száma pontosan egy-e. }
+
+\pro{ \wrk{Friedl 9.20.} Adjunk \PSPACE-algoritmust arra az eldöntési feladatra, amelynek bemenete egy $(G,k)$ pár, és az eldöntendő kérdés, hogy van-e $G$-ben legalább $k$ darab Hamilton-kör. }
+
+\pro{ \easy \wrk{Friedl 9.30., 9.31.} Az $n$ csúcsú, $n+10$ élű gráfokon a \la{HAMILTON} és a 3-színezhetőség eldöntése polinomidőben lehetséges. }
+
+\pro{ \wrk{Friedl 9.35.} Legyen $f: \{0,1\}^\ast \rightarrow \{0,1\}^\ast$ egy függvény, és tegyük fel, hogy a párokból álló $\{ x \# f(x): x \in \{0,1\}^\ast\}$ nyelv polinomidőben felismerhető. Adjunk ellenpéldát arra az állításra, hogy az $f$ függvény polinomidőben kiszámítható. }
+
+\pro{ \easy \wrk{Friedl 9.37.} \NP-teljes annak eldöntése, hogy egy $n$ csúcsú gráfban létezik-e legalább $\sqrt n$ hosszú kör. }
+
+\sol{ Az \NP-beliség nyilvánvaló, maga a megfelelő hosszúságú kör a tanú. Az \NP-teljesség bizonyításához a \la{HAMILTON} feladatot vezetjük vissza a feladatunkra. Legyen $G$ az $n$ csúcsú gráf, melynek Hamilton-tulajdonságát el kell döntenünk. Vegyünk hozzá $n^2-n$ izolált csúcsot a gráfhoz. Ebben a $G'$ gráfban pontosan akkor létezik $\sqrt{|V(G')|}=n$ csúcsú kör, ha $G$-ben létezik Hamilton-kör. }
+
+\pro{ Ha $\P=\NP$, akkor tudunk polinomidőben prímfaktorizálni. }
+
+\hint{ Használjuk a kereséshez a ,,Létezik-e $n$-nek $k$-nál kisebb, de egynél nagyobb osztója?'' eldöntési feladatot. }
+
+\sol{ A ,,Létezik-e $n$-nek $k$-nál kisebb, de egynél nagyobb osztója?'' eldöntési feladat nyilvánvalóan \NP-ben
+van, tehát feltevésünk szerint \P-ben is. Ezt szubrutinként használva felezéses iterációval
+meghatározhatjuk $n$ legkisebb prímosztóját, majd azzal leoszthatunk. Ezt az eljárást
+ismételve sorban megkaphatjuk az összes prímosztót. }
+
+\pro{ Ha $\P=\NP$, akkor 3-színezhető gráfokat tudunk polinomidőben 3-színezni. }
+
+\sol{ Feltevésünk szerint gráfok 3-színezhetőségét el tudjuk dönteni polinomidőben.
+Haladjunk végig sorjában a gráf komplementerének élein. Ha az aktuálisan vizsgált
+élet a gráfhoz hozzávéve 3-színezhető marad a gráf, akkor vegyük be az
+élet a gráfba, és az iteráció további fázisaiban már ezzel a gráffal dolgozzunk,
+a korábbit elfelejtve.
+Az eljárás végén kapott gráfról könnyen látható, hogy Turán-gráf, legfeljebb
+három diszjunkt klikk komplementere. Színezése könnyen megtalálható, és az
+eredeti gráfnak is színezése egyben. }
+
+\pro{ \wrk{Friedl 9.16.} Ha $\P = \NP$, akkor tudunk polinomidőben konjunktív normálformához kielégítést találni (ha a normálforma kielégíthető). }
+
+\pro{ Ha $\P = \NP$, akkor polinomidőben meg tudjuk találni egy irányítatlan gráf valamelyik maximális méretű klikkjét.}
+
+\sol{ A ,,Létezik-e $G$-nek $k$-nál nagyobb méretű klikkje?'' eldöntési feladat \NP-ben
+van, tehát feltevésünk szerint \P-ben is. Ezt szubrutinként használva felezéses iterációval
+meghatározhatjuk a gráf klikkméretét. Ezután hagyjuk el sorjában a gráf éleit, de ügyelve
+arra, hogy ne hagyjunk el olyan élet, amelynek elhagyása csökkenti a klikkméretet.
+Könnyen látható, hogy az eljárás végén egy maximális méretű klikket kapunk. }
+
+Megjegyezzük, hogy a $\P = \NP$ feltétel sem elegendő ahhoz, hogy egy gráf összes maximális méretű klikkjét meghatározzuk polinomidőben. Egy párosítás komplementere példa olyan gráfra, amelynek exponenciális számú maximális klikkje van.
+
+\pro{ Ha $\P = \NP$, akkor polinomidőben meg tudjuk találni egy irányítatlan gráf valamelyik maximális hosszúságú körét.}
+
+\sol{ A ,,Létezik-e $G$-nek $k$-nál hosszabb köre?'' eldöntési feladat \NP-ben
+van, tehát feltevésünk szerint \P-ben is. Ezt szubrutinként használva felezéses iterációval
+meghatározhatjuk a gráf leghosszabb körének hosszát. Ezután hagyjuk el sorjában a gráf éleit, de ügyelve
+arra, hogy ne hagyjunk el olyan élet, amelynek elhagyása csökkenti a leghosszabb kör hosszát.
+Könnyen látható, hogy az eljárás végén egy maximális hosszúságú kört kapunk. }
+
+\sectionend
+
+%------------------------------
+
+\chapter{Klasszikus bonyolultsági osztályok}
+
+\sectionstart
+
+\prochat{\wrk{Jobb fejezetcímet.}
+}
+
+\pro{ \easy Véges nyelv felismerhető konstans időben. }
+
+\prochat{ A következő két feladat a padding, azaz párnázás nevű módszer gyakorlására szolgál. }
+
+\definition{ Egy \Language nyelv $f$ hosszúra párnázott változata, $\Language'$ azon szavakból áll, amelyeket
+\Language-beli $x$ szavakból kapunk, olyan módon, hogy a végükhöz illesztünk egy $f(|x|)-|x|$
+hosszú csupa-nulla szót, ahol $f$ valamilyen (általában gyorsan növő, mindenesetre az identitásnál nagyobb)
+függvény. }
+
+\definition{ $\EXP$ azon nyelvek osztálya, amelyek kiszámíthatók $2^{poly(|x|)}$ futásidejű
+determinisztikus Turing-géppel. $\NEXP$ ennek nemdeterminisztikus megfelelője. }
+
+\pro{ Ha $\P=\NP$, akkor $\EXP=\NEXP$. }
+
+\hint{ Ha \Language benne van $\DTIME(2^{n^c})$-ben, és a
+párnázó $f(n)$ függvényt is $2^{n^c}$-nek választjuk, akkor a párnázott változat
+már \P-ben is benne van. }
+
+\pro{ $\NP \neq \E$. $(\E=\DTIME(2^{O(n)})$. }
+
+\hint{ Végezzünk párnázást. }
+
+\pro{ $\NP \neq \EXP$. \wrk{Ez később jött, befésülendő.} }
+
+\pro{ \hard $\SPACE(n) \neq \P$, azaz a lineáris tárral megoldható problémák
+nem ugyanazok, mint a polinomidőben megoldható problémák. }
+
+\hint{ A Tárhierarchia-tételből azonnal következik, hogy
+$\SPACE(n)$ valódi része \PSPACE-nek. Használjuk fel ezt az eredményt. }
+
+\hint{ \wrk{$P$ zárt ennek és ennek a párnázásnak az inverzére (?), $\SPACE(n)$ pedig nem.} }
+
+\sol{ Tegyük fel, hogy a két osztály egybeesik.
+Egy \PSPACE-beli \Language nyelvet párnázzunk fel annyira, hogy már
+$\SPACE(n)$-ben legyen. \wrk{Írjuk ki konkrétan, hogy $\SPACE(n^k)$-ban van, és $n^k$-val párnázzuk.}
+Indirekt feltevésünk szerint a párnázott nyelv \P-ben
+van. Ekkor viszont a párnázatlan nyelv is \P-ben van \wrk{Miért is pontosan?}, azaz indirekt feltevésünket
+újra kihasználva $\SPACE(n)$-ben is. Tehát a feltevésből következik, hogy
+$\PSPACE = \SPACE(n)$, ami azonban ellentmond a Tárhierarchia-tételnek.
+}
+
+\pro{ \TALLY-nak nevezzük az egybetűs ábécé feletti nyelvek osztályát. Bizonyítsuk be, hogy létezik \TALLY nyelv $\E \setminus \P$ -ben. }
+
+\sol{ Az ,,egyes számrendszerre való áttérés'' \wrk{Definiálni.} művelete kölcsönösen egyértelmű megfeleltetést képez \E és $\P \cap \TALLY$ között. \wrk{Miért is pontosan? Kati szerint olyannyira nem szabadna efölött a trivialitás fölött elsiklani, hogy akár feladható is lenne könnyű feladatként.} Ugyanilyen megfeleltetés van $\DTIME(2^{O(2^n)})$ és $\E \cap \TALLY$ között. Az Időhierarchia-tétel szerint létezik nyelv $\DTIME(2^{O(2^n)}) \setminus \E$-ben. Ennek az egyes számrendszerű változata $\TALLY \cap (\E \setminus \P)$-ben van. }
+
+\pro{ $\NE \setminus \E$ pontosan akkor nemüres, ha $\TALLY \cap (\NP \setminus \P)$ nemüres. }
+
+\sol{ Az ,,egyes számrendszerre való áttérés'' művelete kölcsönösen egyértelmű megfeleltetést képez \E és $\P \cap \TALLY$ között.
+Analóg a viszonya \NE-nek $\NP \cap \TALLY$-hez. }
+
+\sectionend
+
+------------------------------
+
+\chapter{Fejtörők}
+\sectionstart
+
+\pro{ \veryhard Adott egy $n \times n$-es tábla. Minden mezőben egy lámpa és egy
+nyomógomb. Ha egy gombot megnyomunk, a sorában és oszlopában lévő összes lámpa
+állapotot vált (égett-elalszik, aludt-kigyullad), a saját lámpáját is beleértve.
+Bekapcsoláskor minden lámpa kikapcsolt állapotban van.
+Ezután valaki odalép a táblához, és össze-vissza
+nyomogatja a gombokat. Feladatunk, hogy helyreállítsuk az eredeti sötét
+állapotot. Hány gombnyomással tudjuk ezt mindig elérni? }
+
+\pro{ \hard Könnyebb a fenti feladatot megoldani úgy, hogy ha a tábla működési
+szabályát kicsit megváltoztatjuk: Gombnyomásra a gomb sorában és oszlopában
+lévő összes lámpa állapotot vált, kivéve magát a gombhoz tartozó lámpát. }
+
+\pro{ Tekintsük a közismert 15-ös játék azon változatát, amely nem $4 \times 4$-es,
+hanem $2 \times n$-es a táblán játszódik, $n$ darab kék és
+$n-1$ darab piros kővel. Kezdetben a bal felső
+mező az üres, és az alsó sorban vannak a kék kövek.
+Aszimptotikusan hány lépésben tudjuk visszaállítani az
+eredeti állapotot, miután valaki összekeverte a köveket? }
+
+\pro{ Rajzolás téglalapokkal: Adott egy nulla-egy mátrix. Adjunk hatékony algoritmust, amely minél kisebb számú olyan
+mátrix modulo 2 összegeként állítja elő az adott mátrixot, amely mindenhol nulla,
+csak egy összefüggő téglalap-blokkban egy. Elég, ha az algoritmusunk közelíti az
+optimális mátrix-számot. }
+
+\hint{ Minden $2 \times 2$-es összefüggő blokkra tekintsük elemei modulo 2 vett összegét.
+Így egy 'duális' mátrixot kapunk, amely értékeit az eredeti négyzetrács keresztezési pontjain veszi fel.
+Könnyen belátható, hogy az eredeti feladat ekvivalens azzal, hogy ezt a mátrixot állítsuk elő
+minél kisebb számú olyan mátrix összegeként, amely egy kétszer kettes, nem okvetlenül összefüggő
+részmátrix elemein egy, azon kívül nulla értékeket tartalmaz. }
+
+\pro{ A Gonosz elfog három matematikust. Mindegyiknek a fejére húz egy sapkát. A sapka lehet piros vagy kék, és a Gonosz egyenként, pénzfeldobással dönti el, hogy melyikükön milyen sapka legyen. Nem látják a saját sapkájukat, de látják egymásét. Mikor áttanulmányozták egymás sapkáját, vezényszóra egyszerre meg kell mondaniuk, hogy milyen színű a saját sapkájuk. Három választ adhatnak: piros, kék, passzolok. Ha bármelyikük tévedett (azaz nem passzolt, és nem találta el), akkor végez velük a Gonosz, mert buták voltak. Ha mindegyikük passzolt, akkor is végez velük, mert gyávák voltak.
+
+Mielőtt megkapják a sapkákat, tarthatnak egy taktikai megbeszélést. Adjunk nekik módszert, hogy minél jobb esélyük legyen az életben maradásra. A módszer legyen eredményesebb a nyilvánvaló 50\%-nál, amit például úgy érhetnek el, ha egyikük pirosat mond, a többi passzol.
+
+Mi a legjobb életben maradási esély, ha $n$ matematikus van? (Ez általános $n$-re megoldatlan probléma, oldjuk meg minél többféle $n$ értékre.)
+}
+
+\hint{ A lehetséges sorsolásokat feleltessük meg az $n$-dimenziós kocka csúcsainak. Egy adott játékos helyzete ekkora a kocka valamely élének feleltethető meg. Egy tetszőleges megbeszélt stratégia tehát kódolható ennek az élhálózatnak egy irányításával. A stratégia sikerességének valószínűsége egyenlő \wrk{félbehagyva}. }
+
+\pro{ Kémként beépültünk egy ellenséges szervezetbe. Ha üzenetet küldünk társainknak, könnyen kiderülhet, és elfoghatnak. Szerencsére az ellenséges szervezet minden nap közzétesz 64 bit információt (ezt elképzelhetjük egy $8 \times 8$-as fekete-fehérrel színezett saktáblának). Mielőtt a kimenő üzenetet publikálnák, átmegy a kezünkön, és nekünk módunkban áll egyetlen, tetszőleges bitet megváltoztatni rajta. Ennek segítségével üzenhetünk haza. Hány bit információt juttathatunk így ki naponta a szervezetből? (A protokollt természetesen még beépülésünk előtt egyeztettük társainkkal.) }
+
+\pro{ A díszsortűz-feladat: Katonák díszsorfalat állnak. Mindegyik csak a két közvetlen szomszédjával tud kommunikálni, és csak egységnyi időközönként, szinkronizált módon. Az egyes katonák memóriája nagy, de véges méretű. Minden lépésben a memóriájuk állapota, és az előző lépésben hozzájuk bejövő jelzések alapján kimenő jelzéseket adhatnak le szomszédjaiknak. Feladatuk, hogy mindannyian egyidőben adjanak le lövést egylövetű fegyverükből. Ehhez a részletes szabályok a következőek: A nulla időpillanatban megkezdődik a protokoll végrehajtása. Ezután egy előre nem megjósolható időpillanatban a bal szélső kívülről parancsot kap a díszsortűzre. A protokoll akkor helyes, ha véges mennyiségű kommunikációs forduló után mindannyian egyszerre kerülnek a kitüntetett ,,tűz!'' állapotba. Másrészt ezen pillanatot megelőzően egyikük sem kerülhet ,,tűz!'' állapotba, a bal szélsőnek adott parancsot megelőzően sem.
+
+Adjunk számukra protokollt, méghozzá olyat, ahol minél kevesebb lépés telik el a parancs kiadása és a sortűz között. A protokoll nem függhet a sorfal hosszától, és tetszőlegesen hosszú sorfalra is felkészültnek kell lennie. (Tehát olyan sorfalra is, amelynek hossza nem tárolható el a katonák rögzített véges méretű memóriájában.) }
+
+\hint{ Először oldjuk meg a feladatnak azt a változatát, ahol a cél az, csak egyetlen katona tüzeljen, méghozzá az, aki pontosan középen áll a sorfalban. (Az egyszerűség kedvéért feltehetjük, hogy páratlan sokan vannak.) }
+
+\sol{ Az egyszerűbb tárgyalás végett a protokollt csak $2^n-1$ hosszú sorfalakra adjuk meg, az általánosítás könnyű, bár munkaigényes.
+
+Először megadunk egy segédprotokollt, amelyet szubrutinként fogunk használni a megoldáshoz. A segédprotokoll célja az, csak egyetlen katona tüzeljen, méghozzá az, aki pontosan középen áll a sorfalban. Itt is feltesszük, hogy a szélen álló által kapott külső parancs indítja a protokollt, feltehetjük, hogy a bal szélről. A bal szélen álló indítson el egy ,,piros'' üzenetet jobbra, amelyet a megkapói majd körönként továbbküldenek. Ha a jobb szélsőhöz ér, az ,,pattintsa vissza''. A piros üzenettel egyszerre indítson a bal szélső egy ,,kék'' üzenetet is, amelyet a katonák csak minden harmadik körben küldenek tovább. (Ő maga is csak a harmadik körben indítsa.) Könnyen látható, hogy páratlan hosszú sorfal esetén a piros és a kék üzenet éppen a középső katonánál fog először találkozni. Ő ezt észlelve adja le a lövését, és függessze fel az üzenetek továbbküldését.
+
+Az eredeti feladat megoldásához indítsuk el a segédprotokollt, a következőképpen módosítva: Amikor a középső katona megkapja a két üzenetet, akkor ne tüzeljen, hanem menjen át egy ,,kettévágó'' állapotba, ami alatt azt értjük, hogy ő onnan kezdve a piros üzeneteket nem továbbküldi, hanem visszapattintja, mintha a sor szélén állna. Ezzel egyidőben indítsa el a segédprotokollt mindkét irányba egyszerre. (Két, őt is beleértve $2^{n-1}-1$ méretű rész-sorfal felé.) Kellő idő elteltével a sorfal negyedénél és háromnegyedénél állók (egyszerre) kerülnek kettévágó állapotba, és elindítják a saját két-két részprotokolljukat. Ez a rekurzív folyamat akkor ér véget, amikor az utolsó körben minden páros sorszámú katona kettévágóvá válik. (A páratlan sorszámúak már korábban azzá váltak.) A megoldás befejezéséhez csak azt a kiegészítést kell tennünk, hogy a kettévágó katonák minden körben értesítik szomszédaik kettévágó mivoltukról. Ha egy katona érzékeli, hogy ő és összes szomszédja kettévágó, akkor leadja a lövést, és felfüggeszti működését. }
+
+\sectionend
+
+%------------------------------
+
+\chapter{Logaritmikus tár}
+\sectionstart
+
+\pro{ \easy Adjunk \LOGSPACE algoritmust, ami eldönti, hogy egy szó palindróma-e. }
+
+\pro{ \veryhard A fenti problémára nem létezik $o(\log n)$ tárkorlátos algoritmus. }
+
+\hint{ Alkalmazzuk azt az eredményt, hogy a szavak azonosságának eldöntése lineáris kommunikációs bonyolultságú feladat. }
+
+\sol{ Tegyük fel indirekt módon, hogy létezik $o(\log n)$ tárkorlátos algoritmus a problémára. Azt az alapvető eredményt fogjuk alkalmazni, hogy a szavak azonosságának eldöntése lineáris kommunikációs bonyolultságú feladat. A bemenetet osszuk fel két azonos hosszúságú szakaszra, egyik felét Alízra, másik Bobra bízva. Feladatuk annak eldöntése, hogy Alíz bemenetének megfordítása megegyezik-e Bob bemenetével. Az ezt megvalósító kommunikációs protokollt a $o(\log n)$ tárkorlátos algoritmusunk futásából származtatjuk.
+
+A Turing-gép a bemenet középső pontján való áthaladáskor legfeljebb $const^{o(\log n)}$-féle állapotban lehet. Az áthaladások száma nem lehet ennél nagyobb, mert akkor a Turing-gép végtelen ciklusba kerülne. A Turing-gép a középső ponton való áthaladáskor legfeljebb $o(\log n)$ bit információt szállít át a két kommunikáló fél ,,térfele'' között. Tehát a futás alapján egy $const^{o(\log n)} o(\log n) = o(n)$ bonyolultságú kommunikációs protokollt kaptunk a szavak azonosságának eldöntésére, ami ellentmondás. \wrk{Kati szerint leírandó, hogy végülis mi a protokoll.} }
+
+\pro{ Adott egy szintaktikusan helyes logikai formula, amiben csak a zárójelek, az $\wedge$, a $\vee$,
+a $\neg$, és a logikai konstansok szerepelnek. Értékeljük ki \LOGSPACE algoritmussal. }
+
+\sol{ \wrk{A megoldás nincs meg nekem, Borogyin tételének lemmája, és az az ötlete, hogy log-mélységű formulával nincs gond, és egy formula kiegyensúlyozható \LOGSPACE algoritmussal.} }
+
+\pro{ \veryhard Az $\{a,b\}$ elemek által generált szabad csoport szóproblémájának nevezzük a következő feladatot: Adott egy szó az $\{a,b,a^{-1},b^{-1}\}$ négyelemű ábécé felett. Kérdés, hogy ezt szabad csoport-beli szorzatként értelmezve értéke az egységelem-e. (Kombinatorikus megfogalmazásban: Ha az egymás mellett álló inverzeket egyszerűsítjük egymással, akkor ezt a lépést mohón ismételgetve az üres szóhoz jutunk-e.) Adjunk \LOGSPACE algoritmus ennek a problémának a megoldására. \wrk{Kati szerint ezt például szét kell vágni kisebb feladatokra.} }
+
+\hint{
+\[ A := \left( \begin{array}{ll}
+1 & 2 \\
+0 & 1
+\end{array} \right)
+\]
+
+$B$ legyen $A$ transzponáltja. Használjuk fel azt az eredményt, mely szerint $A$ és $B$ a mátrixok
+szorzásával és invertálásával éppen a két elem által generált szabad csoportot generálják. }
+
+\hint{ Kis modulusú aritmetikában le tudjuk ellenőrizni egy hosszú mátrix-szorzatról logaritmikus memóriában, hogy identitás-e az eredménye.
+Használjuk a Kínai Maradéktételt, hogy nagy modulusra is következtethessünk. }
+
+\sol{ A feladatnak egy lineáris algebrai átfogalmazását fogjuk megoldani.
+\[ A := \left( \begin{array}{ll}
+1 & 2 \\
+0 & 1
+\end{array} \right)
+\]
+
+$B$ legyen $A$ transzponáltja. Felhasználjuk azt az eredményt, mely szerint $A$ és $B$ a mátrixok
+szorzásával és invertálásával éppen a két elem által generált szabad csoportot generálják. Feladatunk tehát $n$ darab $\mathbb{Z}$ feletti $2 \times 2$-es mátrix szorzatáról eldönteni, hogy az egységmátrix-e. Ha $\mathbb{Z}$ helyett valamilyen rögzített véges modulus felett dolgoznánk, akkor a feladat triviális lenne, egyszerű balról jobbra haladó beszorzással. Sajnos $\mathbb{Z}$ felett a részeredmények elvben akár $3^n$ nagyságrendig növekedhetnek. (Jobban nem, hiszen minden egyes $A$-val vagy $B$-vel való szorzáskor a mátrix legnagyobb eleme legfeljebb megháromszorozódik.) Ezzel a részeredmények bináris reprezentációja kimerítheti a logaritmikus tárat. A probléma áthidalásához a Kínai Maradéktételt hívjuk segítségül:
+
+Végezzük el egyenként minden $2$ és $2n$ közötti modulussal a beszorzást. (A $poly(n)$ nagyságú modulus feletti aritmetika elvégezhető \LOGSPACE-ben.) Ha bármelyik modulus felett nem az identitásmátixot kapjuk eredményül, akkor befejezhetjük az eljárást, és kijelenthetjük, hogy a szorzat értéke nem az egységelem. Ha mindegyikre azt kapjuk, akkor a Kínai Maradéktétel szerint kijelenthetjük, hogy a modulusok legkisebb közös többszöröse szerinti modulusban is azt kapnánk. A $2$ és $m$ közötti számok legkisebb közös többszöröse egy ismert számelméleti tétel szerint kellően nagy $m$-re legalább $2^m$. Ebbe a képletbe behelyettesítve azt kapjuk, hogy eljárásunk leellenőrizte a mátrixazonosságot egy $4^n$-nél nagyobb modulus felett. De mint korábban láttuk, a $\mathbb{Z}$ feletti szorzáskor kapott részeredmények nem lehetnek $3^n$-nél nagyobbak, ezért a $4^n$ nagyságrendű modulus felett végzett számításkor nem léphet fel ,,túlcsordulás'', és ezért kijelenthetjük, hogy az azonosság $\mathbb{Z}$ felett is igaz, tehát a bemenet értéke az egységelem. }
+
+\pro{ Adjunk \LOGSPACE algoritmust, amely eldönti egy szóról a \{\ (,\ )\ \} kételemű
+ábécé felett, hogy helyesen zárójelezett-e. }
+
+\sol{ Balról jobbra végighaladva a szón, minden pillanatban tartsuk nyilván,
+hogy mennyivel több nyitó-, mint záró zárójellel találkoztunk addig.
+Ha ez a szám bármikor nulla alá csökken, akkor helytelen a zárójelezés.
+Ha az utolsó betű utáni pozícióban nem nulla, akkor szintén. Minden más
+esetben a szó helyesen zárójelezett. }
+
+\pro{ \hard Adjunk \LOGSPACE algoritmust, amely eldönti egy szóról a
+\{\ (,\ ),\ [,\ ]\ \} négyelemű ábécé felett, hogy helyesen zárójelezett-e. \wrk{Tipográfiailag csúnya.} }
+
+\sol{ Először ellenőrizzük le logaritmikus tárban mindkét fajta zárójelről, hogy a másik fajta zárójelektől elvonatkoztatva, önmagában helyesen zárójelezett-e. (Ehhez oldjuk meg az előző feladatot.) Ha igen, akkor minden (nyitó- vagy záró, gömbölyű vagy szögletes) zárójelnek egyértelműen létezik párja, és az logaritmikus memóriával meg is található. Ekkor a következő egyszerű struktúratételt mondhatjuk ki: A szó akkor és csak akkor helyesen zárójelezett, ha nem létezik két olyan, különböző típusú zárójel-pár, amelyek ,,egymásba gabalyodottak'', azaz $(\ldots[\ldots)\ldots]$ mintájúak. Az ilyen tiltott konfigurációk megkereséséhez pedig egyszerűen végigmehetünk egy kettős ciklusban minden lehetséges olyan páron, ami két különböző típusú nyitó zárójelből áll, és a párjaikat megkeresve megvizsgálhatjuk az ,,egymásba gabalyodottságot''. \wrk{Egyrészt ez kicsit pongyola. Másrészt homályban hagyja, hogy a helyes zárójelezettség miféle definíciójából, és hogyan vezettük le a struktúratételt.} }
+
+\pro{ Labirintus a kockás papíron: Adott egy nulla-egy mátrix.
+Az egy értékű elemein gráfot definiálunk: Két csúcs össze van
+kötve, ha (vízszintesen vagy függőlegesen) szomszédosak a mátrixban.
+\la{GRID-STCONN} feladatnak hívjuk az (irányítatlan) s-t összefüggőség eldöntését az ilyen
+módon megadott gráfokban. \la{GRID-STCONN} eleme \LOGSPACE. \wrk{Kati szerint \la{STCONN}-ban máshogy kellene írni az st-t, mert összekeverhető a \la{STRONG-CONN}-nal.} }
+
+\hint{ Egy csúcshoz keressük meg a csúcs komponensének egyértelműen létező ,,legészaknyugatibb'' pontját. }
+
+\pro{ \la{STRONG-CONN} \NL-teljes. }
+
+\sol{ \la{STRONG-CONN} \NL-beliségét többféleképpen bizonyíthatjuk, mutatja például az alábbi visszavezetés \la{STCONN}-ra: Építsük meg \wrk{Ugye valójában nem építjük meg. Kati szerint ezt precízen kellene leírni, olyannyira, hogy külön feladatokban kellene begyakoroltatni azt, hogy hogy zajlik egy \LOGSPACE visszavezetés. Apropó fel lehetne adni a tranzitivitását.} azt a $G'$ gráfot, mely a $G(V,E)$ gráf $|V|+1$ azonos, diszjunkt példányából áll, és az $m$. és $m+1$. példány között előre irányított él vezet az $m+1$ azonosítójú csúcsok között. Az utolsó példányba vezető él az $1$ azonosítójú csúcsba vezessen.
+
+A gráf akkor és csakis akkor erősen összefüggő, ha létezik olyan körséta a csúcsain, amelyen \wrk{Félbehagyva.}
+
+Az \NL-teljesség bizonyításához visszavezetjük az \la{STCONN} feladatot \la{STRONG-CONN}-ra. Adott tehát egy irányított $G$ gráf egy kitüntett $(s,t)$ csúcspárral. Egészítsük ki $G$-t a $G'$ gráffá az alábbi módon: Húzzunk irányított élet $t$-ből az összes $s$-től és $t$-től különböző csúcsba. Továbbá húzzunk irányított élet az összes $s$-től és $t$-től különböző csúcsból $s$-be. Könnyen belátható, hogy $G$-ben akkor és csakis akkor létezik $s$-ből $t$-be menő út, ha $G'$ erősen összefüggő. }
+
+\pro{ \la{2-SAT} \NL-teljes. }
+
+\hint{ Egy $G$ irányított gráf $s-t$-összefüggőségét fogjuk lefordítani \la{2-SAT} formulára. A változók legyenek a csúcsok, és az $x \rightarrow y$ élhez vegyük fel az $\overline{x} \vee y$ klózt. \wrk{És még kell valami t-s visszaél is.} }
+
+\pro{ \easy $\la{BIPARTITE} \in \NL$. }
+
+\hint{ Használjuk az Immermann-Szelepcsényi tételt. }
+
+\sol{ A nem-párosság feladatára könnyű \NL-algoritmust adnunk: az algoritmus egyszerűen megtippel egy legfeljebb csúcsszám hosszú páratlan kört. Ezután a megoldás az Immermann-Szelepcsényi tétel azonnali következménye. \wrk{És kábé ekvivalens vele, vagy van nagyágyútlan megoldás is?} }
+
+\pro{ Az alábbi probléma \NL-teljes: Adott egy irányított gráf az $s$ és $t$ csúcsaival, és egy $k$ szám. Igaz-e, hogy $s$ és $t$ távolsága pontosan $k$? }
+
+\hint{ Használjuk az Immermann-Szelepcsényi tételt. }
+
+\sol{ Először bizonyítsuk az \NL-beliséget. Az ,,Igaz-e, hogy $s$ és $t$ távolsága legfeljebb $k$?'' feladat nyilvánvalóan \NL-beli. Az Immermann-Szelepcsényi tétel szerint tehát a komplementer ,,Igaz-e, hogy $s$ és $t$ távolsága nagyobb, mint $k$?'' feladat is \NL-beli. A két \NL algoritmus egymás után futtatásával a pontosan $k$ távolság feladatát is meg tudjuk oldani \NL-ben. }
+
+\pro{ Melyik \LOGSPACE-beli és melyik \NL-teljes az alábbi problémák közül?
+\begin{enumerate}
+ \item s-t összefüggőség irányított gráfban, amelyben minden pont kifoka legfeljebb kettő.
+ \item s-t összefüggőség szintezett DAG-ban. \wrk{Mi az a szintezett? Meg van adva a bemenet }
+ \item s-t összefüggőség irányított gráfban, amelyben minden pont befoka legfeljebb egy.
+\end{enumerate}
+
+\remark{ \wrk{Ne legyenek open-ended feladatok. Kati szerint akár lehetnek is, ő nem utálja őket.} }
+}
+
+\pro{ \hard \LOGSPACE akkor és csakis akkor zárt a Kleene-féle csillag műveletre, ha $\LOGSPACE = \NL$. }
+
+\hint{ A nehéz irányhoz adjunk meg olyan \Language \LOGSPACE nyelvet, amelynek a Kleene-féle csillagára redukálható az $s-t$ összefüggő topologikusan rendezett irányított aciklikus gráfok nyelve. (Az \Language-beli szavakra való felbontás fogja kifejezni az utat $s$ és $t$ között.) }
+
+\hint{ Az $s-t$ összefüggő topologikusan rendezett irányított aciklikus gráfok nyelve \NL-teljes, mivel a \LOGSPACE Turing-gépről feltehető, hogy számolja, hogy indulása óta hány lépést tett meg. }
+
+\hint{ \wrk{Mondani se kell, hogy ez még nincs kész.} A redukció az alábbi sorokból fog állni: A DAG minden $x$ csúcsára leírjuk $x$-et kétszer, majd felsoroljuk a szomszédait. $x$ DELIMITER1 $x$ D2 $y_1$ D3 $y_2$ D3 \ldots D3 $y_k$ D4. Ezeket az izéket összefűzzük abban a topologikus sorrendben, amelyben a gráf csúcsai adva vannak. Az \Language nyelvben olyan mondatok vannak, amelyekre igaz, hogy az első szó szomszédai között szerepel az utolsó szó: $x$ D2 $y_1$ D3 \ldots $y_l$ \ldots D3 $y_k$ D4, aztán teljes izéből jópár, aztán a végén D4 $y_l$ D1. }
+
+\pro{ $\cl{POLYLOGSPACE} = \bigcup_k \SPACE(\log^k n)$. Bizonyítsuk be, hogy nem létezik \cl{POLYLOGSPACE}-teljes nyelv a \LOGSPACE-redukcióra nézve. Hogyan viszonyulhat \cl{POLYLOGSPACE} \P-hez tartalmazás szempontjából? \wrk{Ne legyenek ilyen argumentatív feladatok.} }
+
+\hint{ Bizonyítsuk be, hogy adott $k$-ra $\SPACE(\log^k n)$ zárt a \LOGSPACE-redukcióra nézve. }
+
+\definition{ Az alábbiakban definiáljuk a Branching Program nevű számítási modellt. Ez a Boole-hálózathoz hasonlóan fix változószámú Boole-függvények kiszámítására szolgál. A Branching Program egy irányított aciklikus gráf, egyetlen (START nevet viselő) forrással, és két nyelővel (az egyik a 0, a másik az 1 nevet viseli). A nem nyelő csúcsok kifoka mindig 2, és a két él közül az egyiken egy Boole-változó, a másikon ennek a változónak a tagadása áll. A változó értéke szerint a csúcsból továbblépünk a megfelelő élen. Adott bemenetre a START csúcsból elvégezve ezt a sétát, egy nyelőbe jutunk. Ennek értéke az adott bemeneten számított kimenet. A Branching Program mérete a csúcsok száma, mélysége a leghosszabb forrás-nyelő út hossza. \wrk{Nincs ennek mégiscsak valami magyar neve? És jó az, hogy nagybetűvel írom? A google szerint Szegeden szemrebbenés nélkül elágazó programnak hívják. Hemaspaandra-Ogihara szerint egy Masek nevű arc még 1976-ban elnevezte döntési gráfnak, ami szerintem szép.} \wrk{Kati szerint érdemes egy külön megjegyzésben megalapozni, hogy a BP az olyan, mint egy döntési fa, csak nem okvetlenül fa.} }
+
+\definition{ $B(f)$-fel jelöljük az $f$-et számító legkisebb Branching Program méretét. $D(f)$-fel jelöljük az $f$-et számító legsekélyebb Branching Program mélységét. }
+
+\definition{ $\la{MAJORITY}(x_1,\ldots,x_n) = \lfloor \sum_i{x_i} / 2 \rfloor$. \wrk{Kicsit faramuci, hogy pont most vezetem be a MAJORITY-t.} }
+
+\pro{ Zárkózottnak nevezünk egy $n$-változós Boole-függvényt, ha $D(f) = n$. Bizonyítsuk be, hogy \la{MAJORITY} zárkózott. \wrk{Elég faramuci, hogy most újra bevezetem a zárkózottságot.} }
+
+\prochat{ Megjegyezzük, hogy egy Branching Program a mélység megváltoztatása nélkül döntési fává alakítható, tehát a zárkózottság definíciója ekvivalens a döntési fáknál már megismerttel.}
+
+\sol{ A zárkózottság bizonyításához ördög-módszert alkalmazunk: Ördögként bármelyik addig még nem kérdezett bitet kérdezik tőlünk, felváltva $1$-et és $0$-t válaszolunk. Kezdjük az $1$-gyel. Ez garantálja, hogy az utolsó kérdés előtt még nem megállapítható a függvény értéke. }
+
+\pro{ \cl{BP}-vel jelöljük azon nyelvek osztályát, amelyekre létezik poly méretű Branching Program-sorozat. Bizonyítsuk be, hogy $\cl{BP} = \cl{LOGSPACE/poly}$. }
+
+\sol{ A $\cl{BP} \subseteq \cl{LOGSPACE/poly}$ tartalmazást bizonyító polinomiális méretű tanú-sorozat nem lesz más, mint az egyes Branching Programok leírása, a \LOGSPACE algoritmus pedig az, amely egy adott bemeneten szimulál egy adott leírású Branching Programot. A szimuláció egyszerű, a START csúcsból élenként haladhatunk a nyelő felé, mindig csak az aktuális pozíciónkat rögzítve.
+
+A fordított irányú tartalmazás bizonyításához rögzítsünk egy \LOGSPACE algoritmust, egy bemeneti hosszat, és egy ahhoz tartozó tanút. Az ezzel ekvivalens Branching Program csúcsainak halmaza legyen a \LOGSPACE algoritmus összes állapotainak halmaza, ahol az állapotba beleértjük a Turing-gép szalagpozícióját is. Ilyen állapotból összesen is csak polinomiális mennyiségű létezik. Minden állapotról megállapítható, hogy mely bemeneti szalagpozíció olvasását végzi, és hogy az olvasott értéktől függően milyen következő állapotba megy át. Az így felrajzolt irányított gráf Branching Programot alkot. }
+
+\pro{ Nemdeterminisztikus Branching Programnak hívjuk a Branching Program azon általánosítását, amikor az élekre tetszőleges literálokat írhatunk. Az elfogadási feltétel itt az, hogy az igaz literálok által feszített részgráfban van irányított út START-ból 1-be. (0-nak most nincs szerepe.) Az \cl{NBP} nemuniform bonyolultsági osztályt \cl{BP}-vel analóg módon definiáljuk. Bizonyítsuk be, hogy $\cl{NBP} = \cl{NL/poly}$. }
+
+\sol{ \wrk{Ezt akkor írom majd le, ha az előzővel, már nagyon elégedett vagyok, mert onnan kezdve nagyrészt copy-paste job.} }
+
+\pro{ \easy Annak eldöntése, hogy két Branching Program ugyanazt a függvényt számítja-e ki, pontosan
+akkor oldható meg polinomidőben, ha $\P = \NP$. }
+
+\sol{ Élesebb állítást bizonyítunk: Annak eldöntése, hogy két Branching Program \textbf{különböző} függvényt számít-e ki, \NP-teljes.
+
+Az \NP-beliség tanúja a bemenet, amelyen a kimenetek különböznek. A teljesség belátásához vezessük vissza \SAT-ot a feladatra. Az egy BP legyen az azonosan hamis kimenetet adó. A másik legyen egy olyan BP, amely az bemeneti konjunktív formulát értékeli ki. Ilyen BP-t könnyű építeni, és nyilvánvaló, hogy a két BP pontosan akkor számít különböző függvényt, ha a normálforma kielégíthető. }
+
+\prochat{\wrk{Az alábbiaknak lehet, hogy jobb helye lenne máshol. És lehet, hogy szebb egyirányú gépekkel megfogalmazni őket.} }
+
+\pro{ Ha egy Turing-gép $o(\log\log n)$ tárat használ, akkor az is igaz, hogy csak konstans tárat használ. }
+
+\pro{ \hard Ha egy Turing-gép konstans mennyiségű tárat használ, akkor reguláris nyelvet ismer fel. }
+
+\sectionend
+
+%------------------------------
+
+\chapter{Polinomiális tár}
+\sectionstart
+
+\definition{ \la{TQBF} (True Quantified Boolean Formula) Probléma:
+Adott egy \SAT formula az $x_1,\ldots,x_n$ változókkal. Kössük le a változókat
+$\forall$ illetve $\exists$ kvantorokkal. Ezáltal egy úgynevezett Teljesen
+Kvantifikált Boole Formulát kapunk. Egy ilyen formulának nincs szabad
+változója, tehát értéke egyszerűen vagy igaz vagy hamis.
+Feladatunk eldönteni, hogy igaz-e.
+
+Példa: $\exists x_1 \forall x_2 : x_1 \wedge x_2$ QBF hamis.
+
+A \PSPACE-teljes nyelv fogalma teljesen analóg az \NP-teljes nyelv
+fogalmával. Ismeretes, hogy \la{TQBF} \PSPACE-teljes. }
+
+\pro{ Lássuk be, hogy az alábbi probléma is \PSPACE-teljes:
+
+Általános Geográfia (\la{GG}) Probléma:
+
+Adott egy irányított gráf, egyik csúcsán egy bábúval. Antal és Borbála
+felváltva lépnek a bábúval az aktuális helyéről egy olyanra, ahova vezet
+irányított él, de még nem járt ott a bábú. Az veszít, aki nem tud lépni.
+Kérdés: Kinek van nyerő stratégiája? }
+
+\pro{ \veryhard Adjunk polinomiális időben kiszámolható nyerő stratégiát az Általános Geográfia
+irányítatlan változatára. }
+
+\hint{ A faktor-kritikus gráfok elmélete szükséges a megoldáshoz. }
+
+\pro{ Ha minden \NP-nehéz nyelv \PSPACE-nehéz is, akkor $\PSPACE=\NP$. }
+
+\pro{ \easy Ha létezik \PH-teljes nyelv, akkor összeomlik a polinomiális hierarchia. }
+
+\sol{ Tegyük fel, hogy létezik \PH-teljes nyelv, méghozzá a hierarchia $k$-dik szintjén lévő $L$ nyelv. Ekkor a hierarchia magasabb szintjein álló nyelvek visszavezethetőek rá, és \wrk{blabla kezdek teljesen elálmosodni}. }
+
+\pro{ Adjunk \PSPACE algoritmust arra a problémára, hogy két reguláris kifejezés ugyanazt
+a nyelvet fogadja-e el. \wrk{Az nem feladat, hogy teljes is \PSPACE-ben?} }
+
+\pro{ Az alábbi probléma \PSPACE-teljes: Adott egy $M$ Turing-gép leírása, és egy $x$ bemenet. Igaz-e, hogy az $M$ gép elfogadja az $x$ szót, miközben nem hagyja el az első $|x|+1$ szalagpozíciót? }
+
+\hint{ Alkalmazzunk párnázást. }
+
+\sectionend
+
+%------------------------------
+
+\chapter{Véletlen algoritmusok}
+\sectionstart
+
+\pro{ Az \Language nyelv eleme \RP-nek pontosan akkor, ha:
+
+Létezik egy olyan $p(n)$ polinom, és egy olyan \P-beli kétváltozós $M(x,y)$ reláció
+(olvasd: $y$ tanúja $x$-nek), hogy ha $x$ nem eleme \Language, akkor $x$-nek nincsen $p(|x|)$
+hosszú tanúja, ha $x$ eleme \Language, akkor viszont a $p(|x|)$ hosszú szavak legalább
+fele tanúja $x$-nek. }
+
+\pro{ Bizonyítsuk be, hogy az \RP definíciójában szereplő $1/2$-et tetszőleges
+$0<c<1$ konstansnak is választhattuk volna. }
+
+\pro{ Bizonyítsuk be, hogy a \BPP definíciójában szereplő $(1/3,2/3)$ helyett
+tetszőleges $(1/2-c,1/2+c)$ is állhatna, ahol $0<c<1/2$. }
+
+\pro{ \easy $\RP \subseteq \NP$. $\RP \subseteq \BPP$. $\cl{co-BPP} = \BPP$. }
+
+\pro{ Az \RP, \BPP, \ZPP nyelvosztályok mindegyike zárt a metszetre és unióra. }
+
+\pro{ \ZPP alábbi három definíciója ekvivalens:
+\begin{enumerate}
+ \item Az algoritmus $1/2$-nél kisebb eséllyel passzolhat, és polinomiális futásidejű.
+ \item Az algoritmus futásidejének várható értéke a bemenet hosszában polinomiális.
+ \item $\RP \cap \cl{co-RP}$.
+\end{enumerate}
+}
+
+\pro{ Ha \SAT eleme \BPP, akkor \SAT eleme \RP. (Ebből azonnal
+következik, hogy ha \NP része \BPP, akkor $\NP=\RP$. \wrk{Ennek prochat-nak kellene lennie, nem?}) }
+
+\pro{ \easy Véges test felett vagyunk (bizonyos bonyodalmak elkerülése
+végett). Adott három $n \times n$-es mátrix, $A,B,C$. Valaki azt állítja, hogy $AB=C$. Mi
+ellenőrizni akarjuk ezt az állítást, úgy, hogy csak $O(n^2)$ szorzást végzünk,
+de nem törekszünk teljes bizonyosságra: ha $AB \neq C$, akkor
+$0.99$ valószínűséggel le akarjuk leplezni a csalást. Adjunk véletlen algoritmust
+a feladatra. }
+
+\pro{ \easy Adott egy $n$-edfokú polinom, és $n-1$ darab szám (nem feltétlen
+különbözőek). Ellenfelünk most azt állítja, hogy ennek a polinomnak
+multiplicitással éppen ezek a gyökei. Adjunk véletlent használó
+leleplező algoritmust, ami gyorsabb, mint a beszorzáson alapuló
+triviális determinisztikus eljárás. }
+
+\pro{ Adott egy \la{2-SAT} formula, amelyben minden klóz két különböző változót
+tartalmaz. \la{MAX2SAT}-nak nevezzük azt az optimalizálási feladatot, melynek célja
+a lehető legtöbb klózt igazzá tenni.
+\begin{enumerate}
+ \item Adjunk gyors \emph{véletlen} algoritmust, amely nagy
+valószínűséggel olyan értékelést ad, amely a klózok legalább háromnegyedét
+igazzá teszi.
+ \item Adjunk olyan determinisztikus polinomiális
+algoritmust, amely a klózok legalább háromnegyedét igazzá teszi.
+\end{enumerate}
+}
+
+\pro{ Bizonyítsuk be, hogy a következő, \la{RP-ACCEPTANCE}-nak nevezett probléma algoritmikusan
+eldönthetetlen: Adott egy véletlen Turing-gép leírása. Igaz-e, hogy ez egy \RP-típusú
+gép, azaz minden bemenetre vagy 0 valószínűséggel fogad el, vagy $1/2$-nél nagyobb
+valószínűséggel? }
+
+\pro{ $p(n)$ tetszőleges előre megadott polinom. \BPP definíciója ekvivalens mindkét alábbi
+definícióval: Létezik a nyelvhez olyan véletlen Turing-gép, amelynek tévedési valószínűsége
+\begin{enumerate}
+ \item $2^{-p(n)}$ (erős \BPP definíció)
+ \item $1/2-2^{-p(n)}$ (gyenge \BPP definíció)
+\end{enumerate}
+}
+
+\pro{ Érveljünk amellett, hogy $\SPACE(O(n^{\log n}))$ nem része \BPP-nek. \wrk{Ezt a lecture05.ps-ben láttam, nem ismerem a megoldást.} }
+
+\pro{ \wrk{Yao tétele, kijelentve, hogy felhasználhatják Neumann minimax tételét.} }
+
+\pro{ $\cl{PP} \subseteq \PSPACE$. }
+
+\pro{ $\NP \subseteq \cl{PP}$. }
+
+\pro{ Ha $\NP \neq \BPP$, akkor $\EXP \neq \cl{EXPSPACE}$. }
+
+\sectionend
+
+%------------------------------
+
+\chapter{Bonyolultsági kérdések a nyelvek és automaták elméletében}
+\sectionstart
+
+\pro{ A következő nyelvosztályok zártak a konkatenációra:
+\begin{enumerate}
+ \item \P
+ \item \NP
+ \item \ZPP
+ \item \LOGSPACE
+ \item \NL
+ \item \Ppoly
+\end{enumerate}
+}
+
+\pro{ A következő nyelvosztályok zártak a Kleene-féle csillag műveletre:
+
+\wrk{Zoli: Kleene definiálandó. Kati: Na jó, de akkor már korábban.}
+
+\begin{enumerate}
+ \item \P
+ \item \NP
+ \item \ZPP
+ \item \NL
+ \item \Ppoly
+\end{enumerate}
+}
+
+\pro{ \veryhard Ha egy nyelv felismerhető egyszalagos, $o(n \log n )$ futásidejű Turing-géppel, akkor reguláris. }
+
+\pro{ Annak eldöntése, hogy egy nemdeterminisztikus véges automata az üres nyelvet
+ismeri-e fel, \NL-teljes. }
+
+\pro{ \hard Ismeretes, hogy egy DFA-hoz polinomidőben meg tudjuk keresni a legkisebb
+állapotszámú ekvivalens DFA-t. Bizonyítsuk be, hogy az analóg NFA-minimalizálási feladat
+akkor és csak akkor oldható meg polinomidőben, ha $\P = \NP$. }
+
+\hint{ Építsünk a CNF-hez olyan NFA-t, amely éppen a nemkielégítő értékeléseket fogadja el. }
+
+\pro{ \hard Adjunk példát \NL-teljes környezetfüggetlen nyelvre. \wrk{Sipser 8.17 van. Nem tudom a megoldást.} }
+
+\pro{ A \la{CFG-EMPTY} döntési feladat egy instanciája \wrk{Kati nem szereti a szót, inkább körbeírná. Vagy esetleg lehet ,,bemenet''.} egy környezetfüggetlen nyelvtan leírása. Az eldöntendő kérdés, hogy a generált nyelv üres-e. Bizonyítsuk be, hogy a feladat \P-teljes. }
+
+\pro{ A \la{CFG-INFINITE} döntési feladat egy instanciája egy környezetfüggetlen nyelvtan leírása. Az eldöntendő kérdés, hogy a generált nyelvnek végtelen sok eleme van-e. Bizonyítsuk be, hogy a feladat \P-teljes. }
+
+\pro{ Ha a \la{CFG-INFINITE} problémát megszorítjuk azokra a környezetfüggetlen nyelvtanokra, amelyekben nincsen üres szó a szabályok jobb oldalán, és nincsen használatlan nemterminális, akkor \NL-teljes problémát kapunk. \wrk{Pontosabban.} }
+
+\pro{ A \la{CFG-MEMBERSHIP} döntési feladat egy instanciája egy környezetfüggetlen nyelvtan leírása és egy szó. Az eldöntendő kérdés, hogy a generált nyelv tartalmazza-e az adott szót. Bizonyítsuk be, hogy a feladat \P-teljes. }
+
+\pro{ Adott két CFG az egyelemű ábécé felett. Feladat annak az eldöntése, hogy a két nyelv azonos-e. Bizonyítsuk be, hogy a feladat \Sigmatwo-teljes. }
+
+\pro{ \hard Annak eldöntése, hogy egy nemdeterminisztikus véges automata a teljes $\Sigma ^ \star$ nyelvet
+ismeri-e fel, \PSPACE-teljes. \wrk{opg3.ps-ből van.} }
+
+\sectionend
+
+%------------------------------
+
+\chapter{Polinomiális hierarchia, orákulumok}
+\sectionstart
+
+\pro{ $\P^{\NP} \supseteq \coNP$. }
+
+\pro{
+\begin{enumerate}
+ \item $\NP^{\NP} \subseteq \Sigmatwo$.
+ \item \hard $\NP^{\NP} = \Sigmatwo$.
+\end{enumerate}
+}
+
+\pro{ Létezik olyan \la{A} orákulum, hogy $\P^{\la{A}} = \NP^{\la{A}}$. }
+
+\pro{ Létezik olyan \la{B} orákulum, hogy $\P^{\la{B}} \neq \NP^{\la{B}}$. }
+
+\pro{ Igaz-e, hogy ,,G-ben pontosan $k$ méretű a legnagyobb klikk?'' eleme \Sigmatwo? }
+
+\pro{ \hard Bizonyítsuk be, hogy \cl{\Sigma_4} nem része a $\SIZE(n^t)$ nemuniform bonyolultsági
+osztálynak, semmilyen fix $t$-re. \wrk{SIZE definiálandó? Ha igen, hol?} }
+
+\hint{ Az alternációt használjuk fel arra, hogy tippeljünk egy nagy bonyolultságú Boole-függvényt, és ellenőrizzünk is le. }
+
+\pro{ \hard Az előző feladat és a Karp-Lipton tétel alkalmazásával lássuk be, hogy az
+előző feladat állítása \cl{\Sigma_4} helyett \Sigmatwo-vel is igaz. }
+
+\hint{ Alkalmazzunk esetszétválasztást aszerint, hogy $\SAT \in \SIZE(n^t)$ \wrk{befejezetlen}. }
+
+\pro{ $\NP^{\NP \cap \coNP} = \NP$. }
+
+\pro{ $\BPP^{\BPP} = \BPP$. }
+
+\pro{ \hard $\NP^{\BPP} \subseteq \BPP^{\NP}$. }
+
+\pro{ A \la{MIN-DNF} nyelv párokból áll. A pár első tagja egy $\phi$ DNF formula. A második egy $k$ egész szám.
+A pár akkor van benne \la{MIN-DNF}-ben, ha létezik $k$-nál nem hosszabb $\psi$ formula, amely ekvivalens $\phi$-vel.
+Bizonyítsuk be, hogy \la{MIN-DNF} eleme \Sigmatwo. }
+
+\pro{ Ha $\cl{\Sigma_k} = \cl{\Pi_k}$ akkor $\PH = \cl{\Sigma_k}$. }
+
+\pro{ Ha $\PH=\PSPACE$, akkor a hierarchiának csak véges sok szintje van. }
+
+\pro{ \wrk{Ez lehet easy feladat is meg hint is az előzőhöz:} Ha létezik \PH-teljes probléma, akkor a hierarchiának csak véges sok szintje van. }
+
+\pro{ $\EXP^{\EXP} = \cl{EEXP}$. ($\cl{EEXP} = \DTIME(2^{2^{n^c}})$.) }
+
+\pro{ $\BPP \subseteq \ZPP^{\NP}$. }
+
+\hint{ $\cl{pBPP}=\cl{pRP}^{\cl{pRP}}$. \wrk{opg5.ps} }
+
+\sectionend
+
+%------------------------------
+
+\chapter{Általános Boole-hálózatok}
+\sectionstart
+
+\pro{ A méret polinomiális mértékű megnövelése árán elérhető, hogy az $AND,OR,NOT$ hálózat
+összes $NOT$ kapuja a legalsó szinten legyen. }
+
+\pro{
+\begin{enumerate}
+ \item Mely Boole-függvények számíthatóak ki Boole-hálózattal?
+ \item Milyen $f(n)$-re igaz, hogy ekkora hálózat már minden $n$-változós Boole-függvényhez létezik?
+\end{enumerate}
+}
+
+\pro{
+\begin{enumerate}
+ \item Mely monoton Boole-függvények számíthatóak ki monoton Boole-hálózattal?
+ \item Milyen $f(n)$-re igaz, hogy ekkora monoton hálózat már minden $n$-változós
+ monoton Boole-függvényhez létezik?
+\end{enumerate}
+}
+
+\pro{ Adjunk $O(n \log n)$ méretű Boole-hálózatot a \la{MAJORITY} függvényre. }
+
+\pro{ \hard Adjunk $O(n)$ méretű Boole-hálózatot a \la{MAJORITY} függvényre. }
+
+\hint{ \wrk{Igaz-e az, hogy a bináris fát alkotó ismételt összeadással $\Sigma_i O(i)n/2^i = O(n)$ méretben vagyunk? Ha igen, akkor nem is nehéz.} }
+
+\pro{ \veryhard Ha \NP része \cl{P/log}, akkor $\P = \NP$. }
+
+\hint{ Vegyük észre, hogy egy adott bemenetre egy adott \cl{P/log} algoritmust le tudunk futtatni minden egyes logaritmikus hosszúságú tanáccsal, polinomiális futásidőben maradva. De sajnos nincsen nyilvánvaló eljárás, amely eldönti, hogy a végigpróbálgatott tanácsok közül melyik a helyes. }
+
+\hint{ Azt kihasználva, hogy a \SAT eldöntési feladat $\cl{P/log}$-ban van, adjunk polinomidejű eljárást, amely megoldja a \SAT keresési feladatot. Az eljárásnak ne legyen bemenete a logaritmikus hosszúságú tanács, csak használja ki annak létezését. }
+
+\pro{ \veryhard Adjunk \PSPACE-beli nyelvet, amelynek az általános Boole-hálózat bonyolultsága
+$O( {n^3} / {\log n} )$ és $O(n^3)$ közé esik. }
+
+\hint{ Először oldjuk meg a feladatot úgy, hogy elhagyjuk a \PSPACE-beliség feltételét, aztán adjunk \PSPACE-beli algoritmust a megtalált nyelvre. }
+
+\hint{ Az adott hálózati bonyolultságú nyelv megtalálásához először tekintsünk egy olyan nyelvet, amelynek a bonyolultsága $2^n/{3n}$ és $2^n$ közé esik. Ilyen nyelv Shannon tétele szerint létezik. Alkalmazzunk párnázást. \wrk{Tényleg ilyen jó konstanst ad Shannon tétele úgy, ahogy azt mi tanuljuk?} }
+
+\hint{ Ha egyáltalán létezik olyan nyelv, amelynek az általános Boole-hálózat bonyolultsága $c_2 {n^3} / {\log n}$ és $c_1 n^3$ közé esik, akkor ilyen nyelvet \PSPACE (konkrétan $\SPACE(n^3)$) algoritmussal is tudunk találni: Sorban haladjunk végig a $c_1 n^3$ méretű hálózatokon. Álljunk meg, ha olyat találunk, amelynek egyetlen $c_2 {n^3} / {\log n}$ méretű hálózattal sem egyezik meg az igazságtáblája. A megtalált hálózatot értékeljük ki a bemenetünkön. }
+
+\hint{ Élesebb megoldás az első hintre: Jelöljük az $n^3-n-1$ méretű hálózatokkal kiszámítható $n$-változós Boole-függvények halmazát $F_n$-nel. Ez a halmaz nem üres, és nem esik egybe az összes $n$-változós Boole-függvények halmazával. Léteznek tehát olyan $f \in F_n$, $g \notin F_n$ $n$-változós Boole-függvények, amelyek csak egyetlen $a$ bemeneten különböznek. $g(x)=(x=a) \vee f(x)$ vagy $g(x)=(x=a) \vee f(x)$, tehát $g$ is kiszámítható legfeljebb $(n^3-n-1)+n+1=n^3$ méretű hálózattal. }
+
+\prochat{ \wrk{Mindezt midterm-sol.ps-ból loptam, jelölésestül, úgyhogy majd kreditet kell adni Luca Trevisan-nak. Az élesebb megoldást feladattá lehetne különíteni.} }
+
+\pro{ Bizonyítsuk be, hogy a monoton Boole-hálózatok kiértékelési feladata \P-teljes. \wrk{Melyik redukcióra?} }
+
+\sol{ A nemtriviális irányhoz visszavezetjük a feladatra az általános Boole-hálózatok kiértékelési feladatát. A visszavezetés triviális, ha az általános Boole-hálózatainkat úgy definiáltuk, hogy csak a legalsó szintjén engedünk meg tagadó kapukat. Ekkor egyszerűen minden negált változóhoz felveszünk egy új változót, megkettőzve a változók számát, és monotonná téve a hálózatot. Ha az általános Boole-hálózatainknak magasabb szintjein is megengedünk tagadó kapukat, akkor ennek a triviális visszavezetésnek az alkalmazása előtt el kell végeznünk azt a polinom idejű átalakítást, amely a tagadó kapukat ,,lenyomja'' a hálózat legalsó szintjére. \wrk{Ez csak akkor elég részletes, ha ezt a lenyomást le tudom hivatkozni egy másik feladatba.}
+}
+
+\pro{ Bizonyítsuk be, hogy a stratified Boole-hálózatok kiértékelési feladata \NL-teljes.
+Stratified-nak hívunk egy Boole-hálózatot, ha vagy csupa $AND$, vagy csupa $OR$ kaput tartalmaz. }
+
+\pro{ \easy Egy nyelv ritka, ha $n$ betűs szavainak száma $poly(n)$. A ritka nyelvek osztályát \SPARSE jelöli. \P-közelinek nevezünk egy \Language nyelvet, ha valamely $\Language' \in \P$ nyelvvel vett szimmetrikus differenciája ritka. \cl{P-close} a \P-közeli nyelvek osztálya. Bizonyítsuk be, hogy \cl{P-close} valódi része \Ppoly-nak. }
+
+\hint{ Része, hiszen a szimmetrikus differencia belekódolható a tanácsba. A tartalmazás valódiságának bizonyításához tekintsük természetes számok egy nemrekurzív $H$ halmazát. Legyen $x \in \Language$ akkor és csakis akkor, ha $|x| \in H$. Ez az \Language nyelv \Ppoly, de nem \cl{P-close}. }
+
+\pro{ \hard Létezik olyan nyelv \PH-ban, amely nincs benne $\SIZE(O(n))$ -ben. }
+
+\hint{ Ha \SAT egy ilyen nyelv, akkor készen vagyunk, tehát a megoldáshoz feltehetjük, hogy \SAT-ra létezik lineáris méretű hálózat-sorozat. }
+
+\pro{ \veryhard (Kannan tétele) Bizonyítsuk be a fenti állítást \PH helyett a $\Sigmatwo \cap \Pi_2$ osztállyal. }
+
+\sol{ \wrk{Nem tudom, hogy hol a megoldás, de Kannan-é az eredmény, és írnak róla itt: http://citeseer.ist.psu.edu/594507.html} }
+
+\pro{ \easy Ha $\NP \subseteq \SIZE(O(n))$, akkor $\P \neq \NP$. Használjuk fel Kannan tételét. }
+
+\sectionend
+
+%------------------------------
+
+\chapter{Kis mélységű Boole-hálózatok}
+\sectionstart
+
+\pro{
+\begin{enumerate}
+ \item Adjunk alsó és felső becslést az $n$-változós \la{PARITY} függvényt kiszámító 2 mélységű Boole-hálózat méretére.
+ \item Adjunk felső becslést az $n$-változós \la{PARITY} függvényt kiszámító 3 mélységű Boole-hálózat méretére.
+\end{enumerate}
+}
+
+\pro{
+\begin{enumerate}
+ \item Mutassunk lineáris méretű hálózatot, amelynek bemenete két
+      $n$ bit hosszú szám, kimenete a két szám ($n+1$ bit hosszú) összege.
+      (Minden kettes számrendszerben történik.)
+ \item Az $x \geq y$ (más néven $\la{COMPARE}(x,y)$) reláció \ACnull-ban van.
+ \item Az összeadás \ACnull-ban van.
+ \item \hard Mekkora lehet egy \ACnull összeadó hálózat konstans mélysége?
+\end{enumerate}
+}
+
+\pro{ \wrk{Ugyanolyan nehéz az n darab n bites szám rendezése, mint az n darab egybitesé. Ugye ez igaz?} }
+
+\pro{ Tudjuk, hogy \la{PARITY} nem eleme \ACnull. Bizonyítsuk be, hogy
+\begin{enumerate}
+ \item \la{MAJORITY} sem.
+ \item \la{SORT} sem.
+ \item $\la{MULTIPLY}(x,y)$ sem.
+ \item $\la{DIVIDE}(x,y)=[x/y]$ sem.
+\end{enumerate}
+}
+
+\pro{ Most azt tudjuk, hogy \la{MULTIPLY} nem eleme \ACnull. Bizonyítsuk be, hogy \la{DIVIDE} sem. }
+
+\pro{ \la{PARITY} eleme \cl{TC^0}. }
+
+\pro{ \veryhard \la{MAJORITY} eleme \cl{NC^1}. }
+
+\pro{ \la{SORT} eleme monoton \cl{AC^1}. }
+
+\pro{ \hard A reguláris nyelvek \cl{NC^1}-ben vannak. }
+
+\pro{ $n$ darab $n$-bites szám összeadása \cl{TC^0}-ban van. }
+
+\pro{ $\la{MULTIPLY}(x,y)$ eleme $AC^1$. \wrk{Sőt, \cl{TC^0}-nak is eleme, ugye?} }
+
+\pro{ $n$ darab $n$-bites szám rendezése \cl{TC^0}-ban van. }
+
+\hint{ Vegyük a páronkénti összehasonlításaikat. }
+
+\pro{ Borogyin tétele: $\cl{NC^1} \subseteq \LOGSPACE$. }
+
+\hint{ \wrk{(Du-Ko 6.24.) Először végezzünk el egy \LOGSPACE transzformációt, amely az adott bemeneti hálózatot formulává alakítja. Aztán értékeljük ki a formulát. Szétszedendő több feladatra.} }
+
+\pro{
+\begin{enumerate}
+ \item Szimmetrikus Boole-függvény kiszámítható 3 mélységű, $2^{O(\sqrt{n} \log n)}$
+     méretű hálózattal.
+ \item \hard  Az állítás igaz $2^{O(\sqrt{n \log n})}$ méretkorlát mellett is.
+ \item \veryhard Az állítás igaz $2^{O(\sqrt{n})}$ méretkorlát mellett is. \wrk{Én sem tudom.}
+\end{enumerate}
+}
+
+\pro{ Adott egy alul-felül $n$ csúcsú páros gráf, $n^2$ bittel leírva.
+\begin{enumerate}
+ \item Adjunk $2^{O(n)}$ méretű konjunktív normálformát, ami megmondja, hogy van-e a gráfnak teljes párosítása.
+ \item Bizonyítsuk be, hogy nem létezik a feladatra $2^{O(n)}$ méretű diszjunktív normálforma.
+\end{enumerate}
+}
+
+\pro{ Adaptálva Savitch tételének bizonyítását, bizonyítsuk be, hogy \NL része \cl{AC^1}. }
+
+\pro{ \hard Elhanyagolva a nagyszámú és nehézkes uniformitási részletet, bizonyítsuk be Russo tételét:
+\begin{enumerate}
+ \item \cl{NC^i} azonos a logaritmikus tárat felhasználó, $O(log^i n)$-time alternáló Turing-gépekkel felismerhető nyelvekkel.
+ \item \cl{AC^i} azonos a logaritmikus tárat felhasználó, $O(log^i n)$-alternáló Turing-gépekkel felismerhető nyelvekkel.
+  \wrk{Ez igazából nemigen adható fel, túl sok fura részlete van. Csak azért írtam ide, mert fontos.
+   barrington - circuits - 23.pdf -ben van benne.}
+\end{enumerate}
+}
+
+\sectionend
+
+%------------------------------
+
+\chapter{Kommunikációs bonyolultság}
+\sectionstart
+
+\prochat{Ez a fejezet egyelőre lényegében csak Dömötör szövegének a beegerezése.
+
+\wrk{@0715 Elnevezzük a két játékost Alice és Bobnak? Egyelőre nem, de lehetne definiálni nevüket. Jelöléseket bevezetni? Ez szerintem hasznos lenne, beírtam párat.}
+
+Jelölések:\\
+$D(f)$: A legrosszabb esetben szükséges determinisztikus kommunikáció hossza.\\
+$N(f)$: A legrosszabb esetben szükséges nemdeterminisztikus kommunikáció hossza.\\
+$R(f)$: A legrosszabb esetben szükséges random kommunikáció hossza, ami az esetek$\leq \frac{1}{3}$ részében téved.\\
+$R^{pub}(f)$: A legrosszabb esetben szükséges random kommunikáció hossza, amikor a résztvevők közös random biteket kapnak és az esetek$\leq \frac{1}{3}$ részében téved.\\
+}
+
+\pro{ Mindkét játékos megkapja egy-egy konvex $n$-szög csúcsainak koordinátáit. (Egy koordináta $O(\log n)$ hosszú.) Feladatuk eldönteni, hogy a két sokszögnek van-e közös belső pontja. $D(f)\leq O(\log^2 n )$. }
+
+\hint{ \wrk{Yao-Ullmann-Yannakakis kell a legegyszerűbb megoldáshoz. De kijön anélkül is, $\log n$ lépésenként lehet felezni az egyik sokszög csúcsainak számát.} }
+
+\pro{ Adott egy $G$ gráf. Egyik játékos kap egy klikket, a másik egy független csúcshalmazt. A kérdés, hogy van-e közös csúcsuk. $D(f)\leq O(\log^2 n )$. }
+
+\pro{
+\begin{enumerate}
+ \item Egyik játékos kap két $n$ hosszú 0-1 sorozatot, míg a másik ezek közül az egyiket. A cél, hogy a másik is tudja, melyiket. $D(f)\leq \log n+O(1)$.
+ \item \hard Most ugyanaz a feladat, csak $k$ példányban, azaz az egyik játékosnak $k$-szor két inputja van, a másiknak pedig minden párból egy. $D(f)\leq \log n \log k\log \log k+O(k)$.
+ \item Sőt, $D(f)\leq \log n \log k+O(k)$.
+\end{enumerate}
+}
+
+\pro{ \la{EQ} feladat: Mindkét játékos kap egy számot $1$-től $2^n$-ig. $R^{pub}(\la{EQ})=O(1)$. }
+
+\pro{ $R(\la{EQ})=O(\log n)$. }
+
+\pro{ \veryhard Tudjuk, hogy az egyik játékosnak van $n$ db valóban különböző inputja, azaz bármely kettőhöz van a másiknak legalább egy olyan inputja, amivel más az output. $R(f)\geq\log n -o(\log n)$. }
+
+\pro{ \veryhard \wrk{ezt szét akarom szedni több részre} Jelölje $D_{--}(f)$ annak a kommunikációs feladatnak az optimális megoldásának a hosszát, amikor a két játékos nem beszélhet egymással, hanem csak egy köztük ülő harmadikkal. A kommunikációt itt is az összes küldött bitben mérjük. $\exists f: D_{--}(f)\leq \frac{3}{2} D(f)+O(1)$. }
+
+\sectionend
+
+%------------------------------
+
+\chapter{Kolmogorov-bonyolultság}
+\sectionstart
+
+\pro{ \easy $| K_{Java}(x) - K_{C++}(x) | \leq c_{Java,C++}$. \wrk{Kati szerint pongyola ez a jelölés.} }
+
+\hint{ Java nyelven írhatunk C++ interpretert, és C++ nyelven Java interpretert. }
+
+\pro{ \easy $P_{|x|=n}(K(x) \geq |x|-c) \geq 1-1/{2^c}$. }
+
+\pro{ \easy Létezik olyan $n$ szám, hogy az $n$-nél nagyobb prímek között nincsenek
+Kolmogorov-véletlenek. }
+
+\hint{ Létezik olyan algoritmus, amely a $k$ bemenetre kiírja a $k$. prímszámot. }
+
+\sol{ A Prímszámtétel szerint egy tetszőleges $p$ prímszám legfeljebb a $\frac {9p} {8 \log p}$-edik a prímszámok sorában. Rögzítsünk egy olyan algoritmust, amely a $k$ bemenetre kiírja a $k$. prímszámot. (Például Erasztotenész szitáját implementálva.) A $k$ bemenetet a programba konstansként beledrótozva olyan algoritmust kapunk, amely $\log k+const$ méretű. Így egy legfeljebb $\log{\frac {9p} {8 \log p}}+const$ méretű algoritmust kaptunk tetszőleges rögzített $p$ prím kiírására. Elegendően nagy $p$ esetén ez a mennyiség kisebb lesz, mint $\log p-const$, amiből következik a bizonyítandó állítás. }
+
+\pro{ \easy Létezik olyan $n$ szám, hogy a $\pi$ $n$-nél hosszabb kettes számrendszerbeli
+közelítései között között nincsenek Kolmogorov-véletlenek. }
+
+\hint{ Létezik olyan algoritmus, amely a $k$ bemenetre kiírja $\pi$ első $k$ számjegyét. }
+
+\sol{ Tekintsünk valamilyen $\pi$-hez konvergáló racionális végtelen sorozatot, amelynek becsülni tudjuk a konvergenciasebességét. (Ez lehet például a Leibniz-formula, lehet a $2 \arctan(1)$ Taylor-sora, vagy a modern, úgynevezett Borwein iteráció.) Látható, hogy ez alapján építhetünk egy algoritmust, amely $\pi$ egyre pontosabb racionális közelítéseit számolja, hibabecsléssel együtt. Ezt felhasználva könnyen építhetünk olyan algoritmust, amely a $k$ bemenetre kiírja $\pi$ első $k$ számjegyét. A $k$ bemenetet a programba konstansként beledrótozva olyan algoritmust kapunk, amely $\log k+const$ hosszú, és kiírja $\pi$ első $k$ számjegyét. Elegendően nagy $k$-ra ez kisebb lesz, mint $k-const$, tehát nagy $k$ értékekre a kimenetek nem lehetnek Kolmogorov-véletlenek. }
+
+\pro{ Nem létezik olyan algoritmus, amely minden $x$-hez megmondja $K(x)$-et. }
+
+\sol{ Indirekt feltételezve $K(x)$-et meghatározó algoritmus létezését, azt szubrutinként
+használhatjuk olyan program írására, amely kiírja a lexikografikusan első olyan $x$ szót,
+amelynek bonyolultsága egy adott $k$ számnál nagyobb. Programunk bonyolultsága
+$const+\log k$-val becsülhető felülről, ahol a $\log k$
+mennyiség a $k$ szám programba való ,,beégetéséből'' származik. Kellően
+nagy $k$ számot választva ellentmondásra jutunk. }
+
+\pro{ Nem létezik olyan algoritmus, amely a $K(x)$ olyan $L(x)$ közelítését számítja ki,
+amelyre minden $x$ szóra $0.9 K(x) \leq L(x) \leq 1.1 K(x)$. }
+
+\sol{ A megoldás lényegét tekintve azonos az előző feladat megoldásával, hiszen
+az $L(x)$ közelítést kiszámító szubrutin is
+alkalmazható arra, hogy megkeressünk egy olyan $x$ szót,
+amelynek bonyolultsága biztosan nagyobb egy adott $k$ számnál.
+\wrk {Akkor itt most megsértettem azt az elvet, hogy nem hivatkoznak egymásra, de itt talán tényleg indokolt volt.} }
+
+\pro{ Bizonyítsuk be, hogy minden $n$ hosszú $x$ szóhoz létezik olyan $y$ szó, amely
+$x$-ből csupán egyetlen bit megváltoztatásával áll elő, ugyanakkor a $K(y|n) \leq n - \Omega (\log n)$.
+\wrk{A $K(y|n)$ jelölést be kell vezetni.} }
+
+\hint{ Használjunk Hamming-kódolást. }
+
+\sol{ A Hamming-kódok elméletéből tudjuk, hogy az $n$-dimenziós kocka csúcsainak létezik egy olyan $H$ részhalmaza, amelyre igaz, hogy 1. A kocka minden csúcsától legfeljebb egy távolságra található $H$-beli elem, 2. $H$ mérete legfeljebb \wrk{$2^{n-\lfloor \log (n+1) \rfloor }$ }. $H$ egy tetszőleges eleme $n$ ismeretében specifikálható azzal, hogy a lexikografikus rendezés szerint hányadik elemről van szó $H$-ban. A feltételeket kielégítő $y \in H$ tehát $\lceil \log |H| \rceil = n - \Omega(\log n)$ bit információval írható le. }
+
+\pro{ Létezik olyan $c$, hogy minden Kolmogorov-véletlen $x$ szóra az egyesek
+számának és a nullák számának különbsége legfeljebb $c \sqrt{|x|}$. }
+
+\hint{ Ha $k$ az egyesek száma a szóban, akkor kódolhatunk úgy, hogy
+megadjuk $|x|$-et, $k$-t, és azt, hogy az $\binom{n}{k}$ lehetőség
+közül melyik valósul meg. Alkalmas $k$-ra ez a kódolás tömörítés lesz. }
+
+\sol{ Ha $k$ az egyesek száma a szóban, akkor kódolhatunk úgy, hogy
+megadjuk $|x|$-et, $k$-t, és azt, hogy az $\binom{|x|}{k}$ lehetőség
+közül melyik valósul meg. Ennek a kódolásnak a hossza $O(\log |x|) + O(\log k) + O(\binom{|x|}{k}) \leq $ Alkalmas $k$-ra ez a kódolás tömörítés lesz. \wrk{Számoljuk ki.} }
+
+\definition{ Elegánsnak hívunk egy programot, ha ő a legrövidebb azok közül, akik
+az ő kimenetét adják. (Esetleg holtversenyben.) }
+
+\pro{ \easy Minden elegáns program Kolmogorov-véletlen. }
+
+\sol{ Ha konstansnál több bitet tömöríthetünk egy programon, akkor a tömörített változatát kitömörítő majd lefuttató
+program rövidebb nála, miközben azonos kimenetet ad. }
+
+\pro{ Minden axiómarendszerhez csak véges számú olyan $p$ program létezik, amelynek
+eleganciája bizonyítható a rendszerben. (Mindeközben végtelen sok elegáns program létezik,
+tehát léteznek bizonyíthatatlan igaz állítások az axiómarendszerben.) }
+
+\sol{ Tekintsünk egy olyan programot, amely az axiómarendszer összes lehetséges bizonyítását
+enumerálva bizonyítható állításokat bocsát ki. A program kimenetét vezessük át egy
+olyan szűrőprogramon, amely (tisztán formális ismérvek alapján) csak olyan állításokat enged
+át, amelyek valamely program eleganciáját jelentik ki. Legyen $k$ később meghatározandó
+nagy természetes szám. Ha a szűrő végtelen sok állítást enged át magán,
+akkor előbb-utóbb kibocsát olyan állítást, amely egy $k$-nál hosszabb
+program eleganciáját jelenti ki. Az első ilyen állítás megtalálásakor futtassuk le a
+megtalált hosszú és elegáns programot, majd állítsuk le összes program-modulunkat. Mi a kiírt szó
+Kolmogorov-bonyolultsága? A szűrőn átengedett állítás szerint legalább $k$. Másrészt
+programunk minden összetevője (bizonyítás-enumeráló, szűrő, szimulátor)
+az axiómarendszer rögzítése mellett konstans hosszúságú,
+tehát a programunk bonyolultsága $const+\log k$-val becsülhető felülről, ahol a $\log k$
+mennyiség a $k$ szám programba való 'beégetéséből' származik. Kellően
+nagy $k$ számot választva ellentmondásra jutunk, amelynek egyetlen lehetséges feloldása,
+hogy a szűrőprogram csak véges sok állítást enged át magán. }
+
+\sectionend
+
+%------------------------------
+
+\chapter{Tartalékok}
+\sectionstart
+
+\pro{ Egy $n$ szám $m$ modulus szerint vett $t$-edik hatványát ki tudjuk számolni polinomidőben.
+(Mindhárom bemenet kettes számrendszerben van megadva.) }
+
+\sol{ Egy $n$ szám $m$ modulus szerint vett négyzetét természetesen ki tudjuk számolni polinomidőben. A négyzetre emelés műveletét ismételgetve a negyedik, nyolcadik, stb. hatványát is ki tudjuk számolni polinomidőben, amíg a négyzetre emelések összes száma polinomiális. $t$ kettes számrendszerbeli felírása legyen $2^{i_1}+\ldots+2^{i_k}$. Ez alapján $n^t = n^{2^{i_1}+\ldots+2^{i_k}} = \prod_l{n^{2^{i_l}}}$. Ennek a szorzatnak minden tényezője kiszámolható polinomidőben, és összesen polinomiális számúan vannak. }
+
+\pro{ \easy Egy $n$ szám $t$-edik hatványát nem tudjuk kiszámolni polinomidőben az egészek között. }
+
+\pro{ Egy $[n]$ feletti $p$ permutáció $t$-edik hatványát ki tudjuk számolni
+polinomidőben. ($t$ kettes számrendszerben van megadva.) }
+
+\sol{ \wrk{Annyira azonos a megoldás az előzővel, hogy restellem is leírni. $n$ helyett $p$-t kell írni.} }
+
+\pro{ http://www.cl.cam.ac.uk/Teaching/2003/Complexity/exercise1.pdf \la{HORN-SAT} \P-beli, és \P-teljes a \LOGSPACE-redukcióra nézve. Utóbbihoz kell a konkrét visszavezetés nemdeterminisztikus eldöntésről \SAT-ra. Ez ügyesen csinálható úgy determinisztikus gépekre, hogy Horn-formulát adjon. }
+
+\pro{ \hard \wrk{Dömötöré. Mik ezek a példák? A szimmetrikus az, hogy $xx$ alakú? Akkor hamis az állítás. Nem értem.} A nem szimmetrikus szavak (pl $baba$ szimmetrikus, de $bababa$ vagy $babab$ nem) nyelve környezetfüggetlen. }
+
+\pro{ \hard \wrk{Dömötöré.} Egy szalagon adott $n$ db szám, mindegyik $1$-től $n$-ig. Valamelyik szám több, mint $\frac{n}{2}$-szer szerepel. Állapítsuk meg egy $O(\log n)$ tárhelyet használó egyirányú automatával, hogy melyik. }
+
+\prochat{ http://cs-www.bu.edu/faculty/homer/332/homework/hw6.html több értelmes kérdést is tartalmaz. http://cs-www.bu.edu/faculty/homer/332/homework/hw5.html már nagyrészt kivesézve. }
+
+\pro{ Lássuk be, hogy a \P és \EXP osztályok zártak a Karp-redukcióra (más néven a polinomidejű many-one visszavezetésre). A bizonyítás nem megy át az \E osztály esetére. Mi kellene ahhoz, hogy be tudjuk bizonyítani, hogy \E nem zárt a Karp-redukcióra? }
+
+\pro{ Az igen/nem/passzolós Turing-géppel felismerhető nyelvek osztálya része $\NP \cap \coNP$-nek:
+Define a strong nondeterministic Turing machine as one where each computation
+has three possible outcomes: accept, reject or maybe. If M is such
+a machine, we say that it accepts L, if for every $x \in L$, every computation
+path of M on x ends in either accept or maybe, with at least one accept
+and for $x \notin L$, every computation path of M on x ends in reject or maybe,
+with at least one reject.
+Show that if L is decided by a strong nondeterministic Turing machine
+running in polynomial time, then $L \in NP \cap co-NP$. }
+
+\prochat{ http://www.cs.unm.edu/~moret/computation/ (Ezt szerintem kimerítettem.)
+
+http://www.cs.tau.ac.il/~safra/Complexity/exercises.htm (Ezt szerintem kimerítettem.)
+
+Az angol Lovász: http://www.cs.elte.hu/~kiraly/complexity.pdf (Talán ezt is.) }
+
+\pro{ Esetleg az a feladat final-sol.ps -ből, amikor egy hashP közelíthetőségéből következik,
+hogy \P=\BPP. }
+
+\prochat{ Még jó lenne valami a promise problémákról:
+
+(http://www.wisdom.weizmann.ac.il/~oded/prpr.html) }
+
+\prochat{ A nemuniform fejezetben például elkelne egy feladat a BPP/log definíciójának komplikációiról:
+
+(http://weblog.fortnow.com/2006/07/definitions-of-advice.html) }
+
+\prochat{ A véletlen algoritmusos fejezet nagyon soványka. Elkelne bele a egy-két feladat a Motwani-Raghavan 'Randomized Algorithms' könyvből. Mondjuk páronkénti függetlenségről, vagy akár entrópiáról jó lenne valami. }
+
+\prochat{ Sok remek NP-teljességi tétel bizonyítással:
+http://www.cs.tau.ac.il/~safra/Complexity/exercises.htm }
+
+%7.  (a) Given a sequence of N real numbers, find the pair of integers that
+%         are closest in value. Give a O(N^2) algorithm. Give a O(N log N)
+%         algorithm. (Esetleg bizonyítsd, hogy optimális. Tudnád?)
+%
+%     (b) Given a sequence of N real numbers, find the pair of integers that
+%         are farthest apart in value. Give a O(N) algorithm.
+%
+% 8.  (challenge for the bored)  Design a O(N log N) algorithm to read in
+%     a list of words and print out all anagrams.  For example, the
+%     strings "comedian" and "demoniac" are anagrams of each other.
+%     Assume there are N words and each word contains at most 20 letters.
+%     Designing a O(N^2) algorithms should not be too difficult, but
+%     getting it down to O(N log N) requires some cleverness.
+%     Vagy beugratós, vagy rosszul van kitűzve, mert 26^20-nál többféle nem is lehet, és elég ennyi bucketbe rakni, aztán kiolvasni.
+
+\pro{ A Formula-kiértékelés \LOGSPACE, a Boole-hálózat-kiértékelés \P-teljes:
+http://www.cs.huji.ac.il/~tamirr/complexity2001/ex/ex1.ps }
+
+\pro{ Ha $\PSPACE \subseteq \Ppoly$, akkor $\PSPACE = \cl{\Sigma_k}$ valamely $k$-ra.
+http://www.cs.huji.ac.il/~tamirr/complexity2001/ex/ex5.ps }
+
+\pro{ Minden $c$ konstanshoz létezik \Language ritka nyelv, és $k$ konstans, hogy $\Language \in \cl{\Sigma_k}$, de $\Language \notin \SIZE(n^c)$.
+Hint itt: http://www.cs.huji.ac.il/~tamirr/complexity2001/ex/ex6.ps }
+
+\pro{ (Mahaney) Ha \SAT Karp-redukálható egy ritka nyelvre, akkor $\P=\NP$.
+Hint itt: http://www.cs.huji.ac.il/~tamirr/complexity2001/ex/ex6.ps }
+
+\prochat{ Itt is van esetleg használható:
+http://www.cs.huji.ac.il/~tamirr/complexity2001/ex/ex6.ps
+AM-ről van szó. }
+
+\pro{ Létezik-e olyan $\la{O}$ orákulum, amelyre $\P^{\la{O}}=\EXP^{\la{O}}$? }
+
+\pro{ Konstruáljunk $\la{O}$ orákulumot, amelyre $\P^{\la{O}}=\NP^{\la{O}}$. }
+
+\prochat{ Egy kincsesbánya orákulumos feladatokból:
+http://www.itu.dk/courses/IKTB/E2004/index.html }
+
+\prochat{ Tök szép MIP proof-systemek vannak, amikre rá lehet jönni. ...Tényleg? }
+
+\prochat{ Ha pár klasszikus adatstruktúrás feladatot is akarnék adni, itt lennének szépek: http://www.cse.iitd.ernet.in/~sbaswana/Puzzles/Algo/algo.html }
+
+\pro{ Algoritmikusan eldönthetetlen, hogy egy adott Turing-gép polinomidőben megáll-e minden bemenetére. }
+
+\pro{ Du-Ko szebben írja le az $\EXP=\NEXP$ eredményt. Azt mondja, hogy az alábbi három állítás ekvivalens: (a) $\EXP=\NEXP$. (b) $\NP \cap \TALLY \subseteq \P$. (c) $\NP \cap \SPARSE \subseteq \P$. (És ezek tagadásából következik, hogy $\P=\NP$.) }
+
+\pro{ (Du-Ko 2.4.) Legyen \la{A} \NP-teljes, és \la{B} \P-beli. Bizonyítsuk be, hogy ha \la{A} és \la{B} diszjunktak, akkor az uniójuk \NP-teljes. Igaz-e ez akkor is, ha nem diszjunktak? }
+
+\pro{ Véges nemüres nyelv pontosan akkor \NP-teljes, ha $\P=\NP$. }
+
+\pro{ A DNF-SAT \P-beliségéhez egy kis csavar: Egy DNF-hez található polinomidőben olyan CNF (esetleg több változóval), amely pontosan ugyanakkor kielégíthető. Fordítva (CNF-hez DNF) csak akkor található, ha $\P=\NP$. }
+
+\pro{ (Du-Ko 2.14.) Adjunk olyan nyelvpárt, amely bizonyítja, hogy a polinomiális igazságtábla-visszavezethetőség gyakoribb, mint a polinomiális Karp-visszavezethetőség. Adjunk olyan nyelvpárt, amely bizonyítja, hogy a polinomiális Turing-visszavezethetőség gyakoribb, mint a polinomiális igazságtábla-visszavezethetőség. }
+
+\pro{ (Du-Ko 2.16.) Bonyodalmas összefüggések az orákulumos Turing-gépek különböző tár-mérési módjai között. }
+
+\pro{ (Du-Ko 3.3.a) Definíció: Egy \Language nyelv \cl{DP}-ben van, ha létezik két \NP-beli nyelv, amelynek \Language a halmazelméleti különbsége. \la{SAT-UNSAT} bemenete két CNF. Kimenete, hogy igaz-e, hogy az első kielégíthető és a második nem. Bizonyítsuk be, hogy \la{SAT-UNSAT} \cl{DP}-teljes a Karp-visszavezetésre nézve. }
+
+\pro{ (Du-Ko 3.3.b) \la{EXACT-CLIQUE} (pontosan k méretű a legnagyobb klikkje) \cl{DP}-teljes. }
+
+\pro{ (Du-Ko 3.3.c) \cl{DP}-teljes annak eldöntése, hogy $G$ irányítatlan gráfra igaz-e, hogy a részgráf-képzésre nézve maximális az olyan gráfok közül, amelyeknek nincsen Hamilton-köre. }
+
+\pro{ (Du-Ko 3.4.) Boole-hierarchia. (b) ,,A kromatikus szám páratlan és $3k$ és $4k$ között van.'' nyelv teljes a Boole-hierarchia k-dik szintjére, ha $k$ páratlan. (c) A Boole-hierarchia pontosan akkor omlik össze, ha a polinomiális hierarchia összeomlik. }
+
+\pro{ (Du-Ko 3.5.) Integer Expression Equivalence \cl{\Pi_2}-teljes. }
+
+\pro{ (Du-Ko 3.9.) Kétváltozós reláció tanzitív lezártját értelemszerűen definiáljuk. Koncentráljunk olyan relációkra, amelyek csak azonos hosszúságú szavak között teljesülnek. (a) Egy \P-beli reláció tranzitív lezártja \PSPACE-beli. (b) Létezik olyan \P-beli reláció, amelynek a tranzitív lezártja \PSPACE-teljes. }
+
+\pro{ (Du-Ko 3.10.) \la{DFA-INTERSECTION}. Bemenet néhány DFA leírása, kimenet hogy van-e olyan szó, amelyet mindannyian elfogadnak. \la{DFA-INTERSECTION} \PSPACE-teljes. }
+
+\pro{ (Du-Ko 3.11.) \la{MIN-NFA} bemenete egy NFA leírása és egy $n$ természetes szám. Kérdés, hogy létezik-e $n$-nél nem nagyobb állapotszámú, a bemenetivel ekvivalens NFA. \la{MIN-NFA} \PSPACE-teljes. \wrk{Lehet, hogy ilyen feladat már van is.} }
+
+\pro{ (Du-Ko 4.2.) Egy nemdeterminisztikus Turing-gép $k$-értelmű ($k$-ambiguous), ha minden bemenetre legfeljebb $k$ az elfogadó számítási útvonalak száma. \cl{k-UP} a polinomidejű $k$-értelmű nemdeterminisztikus Turing-gépekkel eldönthető nyelvek osztálya. Bizonyítsuk be, hogy $\P=\cl{UP}$ akkor és csakis akkor, ha $\P=\cl{k-UP}$. \wrk{Hülye smallcaps.} }
+
+\pro{ (Du-Ko 4.3.) A gráfizomorfia problémája kölcsönösen Karp-visszavezethető az irányított gráfok gráfizomorfiájának problémájára. }
+
+\pro{ (Du-Ko 4.12.a) $\P=\NP$ akkor és csakis akkor, ha minden $T \in \TALLY$ nyelvre $\P^T=\NP^T$. }
+
+\pro{ (Du-Ko 4.12.b) Legyen $k \geq 2$. $\PH=\cl{\Sigma_k}$ akkor és csakis akkor, ha minden $S \in \SPARSE$ nyelvre $\PH^S=\cl{\Sigma_k}^S$. }
+
+\pro{ (Du-Ko 4.12.c) $\PH=\PSPACE$ akkor és csakis akkor, ha minden $S \in \SPARSE$ nyelvre $\PH^S=\PSPACE^S$. }
+
+\pro{ (Du-Ko 5.19.) Az alábbi gráftulajdonság nem zárkózott: Létezik az $n$ csúcsú gráfban egy olyan összefüggő komponens, amely $n-4$ csúcsból áll. }
+
+\pro{ (Du-Ko 5.29.) A ,,létezik legalább $k$ méretű klikkje'' gráftulajdonság zárkózott. }
+
+\pro{ (Du-Ko 5.29.) A $k$-színezhetőség gráftulajdonság zárkózott. }
+
+\pro{ (Du-Ko 5.29.) A körmentesség irányított gráftulajdonság zárkózott. }
+
+\pro{ A monoton CIRCUIT-VALUE-PROBLEM is \P-teljes. }
+
+\pro{ (Du-Ko 6.5.) Egy síkbarajzolható Boole-hálózat két $n$ bites szám szorzására $\Omega(n^2)$ kaput használ. }
+
+\pro{ (Du-Ko 6.9.a) Egy számsorozat tagjainak összeszorzása \cl{NC^1}-ben van. }
+
+\pro{ (Du-Ko 6.9.b) Permutációk egy sorozatának összeszorzása \LOGSPACE-ben van. }
+
+\pro{ (Du-Ko 6.13.a) Ha $\PSPACE \subseteq \Ppoly$, akkor $\PSPACE=\Sigmatwo$. }
+
+\pro{ (Du-Ko 6.13.b) Ha $\PSPACE \subseteq \cl{P/log}$, akkor $\PSPACE=\P$. }
+
+\pro{ (Du-Ko 6.13.c) Ha $\EXP \subseteq \cl{PSPACE/log}$, akkor $\EXP=\PSPACE$. }
+
+\prochat{ Időkorlátok híján a Du-Ko 7.4 fejezetet beépíteném, de nem fogom. }
+
+\prochat{ Hemaspaandra-Ogihara ötödik fejezete telis-tele van jópofa kis eredményekkel \cl{\#P}-ről, \cl{PP}-ről, \cl{UP}-ről, amik eddig el lettek teljesen hanyagolva. Aztán \cl{GapP}-ről a kilencedik fejezetben van szó. Aztán a Rogues' Gallery-ben minden osztályhoz van egy Selected Facts and Theorems, ami a legnagyobb kincsesbánya. }
+
+\prochat{ Apropó kincsesbánya: Asszem a Complexity Zoo is felsorol egy csomó triviális tartalmazást, amiből könnyű feladatot lehet csinálni. Nem is beszélve Kuperberg robozoologist-járól. }
+
+\prochat{ Még a \P-teljességről is kellene cucc. }
+
+\prochat{ A Toda-tétel bizonyításához szükséges osztályoperátoralgebrai manipulációkból nem lenne nehéz feladatokat adni, feltéve, hogy már bevezettem az operátorokat. Du-Ko 9.4. fejezet. }
+
+\pro{ (Du-Ko 9.2) Ha a páros gráfok teljes (?) párosításainak leszámlálása \cl{\#P}-teljes, akkor az általános gráfoké is az. }
+
+\prochat{ Du-Ko 10.3 fejezet: Arthur-Merlin dolgok, az AM hierarchia összeomlása. }
+
+\prochat{ Itt egy remek cikk a permanensről, \cl{TC_0}-ról, és a számolási hierarchiáról. Feladatok mazsolázhatóak a környékéről: http://eccc.hpi-web.de/eccc-reports/2006/TR06-113/Paper.pdf }
+
+\pro{ Tegyük fel, hogy \P=\NP. Adjunk konkrét algoritmust \SAT eldöntésére, amely véges sok bemenettől eltekintve mindig polinomiális időben fut. \wrk{Vagy mindig polyban fut, de véges sok esetben hibázik? Vagy véges sok esetben passzol?} }
+% Eredeti szöveg:
+% Give a specific algorithm that decides SAT in polynomial time on all but finitely many instances, if P=NP.
+%
+%Awesome, awesome problem -- thanks so much! Here's my solution:
+%
+%http://www.blogger.com/comment.g?blogID=17392898&postID=115736185803558384
+%
+%Let M_1,M_2,... be an enumeration of Turing machines with polynomial-time alarm clocks. Given a formula phi of size n, first run M_n for up to n steps, then run M_{n-1} for up to n steps, then M_{n-2}, and so on. For each machine M_i, ask it to output a proof that machines M_1,...,M_{i-1} all fail to correctly decide SAT within their specified time bounds. Let M_j be the first machine found that succeeds at this task. (If no such M_j is found then fail.) Simulate M_j on input phi and output whatever it does.
+%
+%Why does this work? By the assumption P=NP, there's some lexicographically-first machine M_j that decides SAT within its specified time bound. For all sufficiently large n, this M_j will pass the initial testing phase (i.e., it will have enough time to prove that its "rivals" M_1,...,M_{j-1} all fail). Furthermore, for all k>n, M_k will not pass the testing phase, since it won't be able to prove that M_j fails. So for all sufficiently large n, our algorithm correctly decides SAT by simulating M_j, in whatever the time bound of M_j is plus n^2 steps of overhead.
+
+\prochat{ Lehet, hogy kellene valami algebrai bonyolultságelmélet is. }
+
+\sectionend

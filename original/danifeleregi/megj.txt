@@ -1,0 +1,11 @@
+0.7/18: Ez tényleg igaz? Szerintem nem, pedig már láttam a Papadimitriouban is (62.oldal). Ott ez: http://citeseer.ifi.unizh.ch/context/150005/0 van meghivatkozva, de a cikk nincs online. Leírom, hogy szerintem mért nem igaz. A felismerendő L nyelv: A szó egy \leq logloglog n hosszú palindróma ami után csupa nulla áll. Ezt fel lehet ismerni nagyon kevés tárral, de konstans tárral nem, a 0.7/2 miatt. Valószínűleg más a feladat mint hiszem, de nem tudom mi.
+
+0.9/13: Az nem jó, hogy van RND Tgépek között is hierarchia tétel, tehát BPP< BP(n^logn) és közben meg tudjuk, hogy BP(n^logn)< SPACE(n^logn)?
+
+régi
+0.5/3 Mo: Ha kül előjelűek és azonos klózban vannak, akkor a formulának ez a része kielégíthető.
+
+0.5/12: Trivi a megoldás.
+
+0.5/14: Itt a polinomidő az poly(n log t)
+
