@@ -72,7 +72,8 @@
 \newcommand{\wrk}[1]{}
 }
 
-\newcommand{\definition}[1]{\hspace*{-8mm} \textbf{Definíció:} #1 \vspace{2mm}}
+\newcommand{\definition}[1]{%\hspace*{-8mm}
+	\textbf{Definíció:} #1 \vspace{2mm}}
 
 % Olyan referencia, ami látszik is az olvasó számára. Egyelőre nem csináltam meg, de tervezem azt a fajta referenciát, ami csak a számomra látszik, hogy konkrétan honnan vettem egy-egy folklór eredményt.
 \newcommand{\reff}[1]{(#1)}
@@ -186,7 +187,7 @@
 \newcommand{\BWBP}{\cl{BWBP}}
 
 % Nyelv:
-\newcommand{\la}[1]{\mbox{\sc{#1}}\xspace}
+\newcommand{\la}[1]{\mbox{\sc{\MakeLowercase{#1}}}\xspace} %Azert van MakeLowerCase, mert osszevissza vannak irva
 % Konkrét nyelvek:
 \newcommand{\SAT}{\la{sat}}
 \newcommand{\Language}{\la{L}} % Na Ĺ éppenhogy nem konkrét. Ăs a nevének kellemetlen tulajdonsága, hogy ösztönösen ,,a \\Language''-et Ă­rok.
@@ -259,6 +260,51 @@ A forrásfile-ok az EGRES csoport példatárán alapulnak. Köszönet ...
 \tableofcontents
 \newpage
 
+\section*{Szándékok}
+
+Kati szerint több segítés helyett mégiscsak legyen feladatra bontás. Az emelletti érvek teljesen agyonnyomják az én ösztönös averziómat.
+
+Kati szerint legyen egy Jelölések fejezet, meg egy ,,felhasznált tételek'' fejezet.
+
+A Feladatok számozása a tételek szokásos számozásával azonos, fejezetszám.sorszám formában. A Definíciókat nem számozzuk. Lehetségesek továbbá a feladatok közti összekötő szövegek és kommentárok, (chat parancs), de ezzel az eszközzel ritkán fogok élni, és lehet, hogy
+
+A feladatok állítását tipikusan csak kijelentjük, ,,Bizonyítsuk be, hogy\dots'' jellegű előtagokat nem használva. Eddig ettől az elvtől eltértem ott, ahol az előző mondatban egyszerhasználatos definíciót vezettem be, és így akartam megkülönböztetni a két kijelentő mondat szemantikáját. Például: \la{DOUBLE-SAT} a legalább két különböző kielégítéssel rendelkező Boole-formulák
+osztálya. Bizonyítsuk be, hogy \la{DOUBLE-SAT} \NP-teljes.
+
+A feladatok négy nehézségi szintbe vannak sorolva: difficulty=-1: könnyű, definíció megértését ellenőrző. 0: Az alap, ami nincs külön jelölve. 1: nehéz. 2: nagyon nehéz. Mindet át kell nézni, de a könnyű az, amit utólag vezettem be, és ezért még általában nincs kitéve. Eredetileg nem az exercise\_EGRES.sty-t használtam, úgyhogy az alfeladatoknál még benne maradt egy-kettő az eredeti \hard makrókból, mindenhol máshol a difficulty-t használom. Valószínűleg sub-questionre kell áttérni, az automatikusan megoldja ezt.
+
+Kati szerint az az állítás, amire egy közepes vagy gyengébb képességű hallgató visszakérdezne, leírandó, hiszen itt nincs mód a visszakérdezésre.
+
+A feladatok megoldásában nem hivatkozhatok a hintekben bevezetett fogalmakra és állításokra. A megoldások és hintek nem hivatkozhatnak más feladatoknak semmijére sem, beleértve a kitűzést is. Kati szerint hivatkozhassunk a feladatokra. A megoldásokban a korábbi feladatok kimondott állításait használhatnánk, meg például kijelenthetnénk, ha két feladat között valami viszonyulás van (alsó becslés-felső becslés).
+
+Ha az állítás valakinek a tétele (Borogyin, Kannan), akkor azt oda kellene írni.
+
+A használt fogalmak közül azokra lesz definíció, amelyek nem szerepelnek a Lovászban. A jelölések ahol lehet, hozzá igazítandóak.
+
+A könnyebb kérdések válaszait kicsit részletesebben, pedánsabban írjuk le. Ez egyrészt azért célszerű, mert gyakran nem pontosan ugyanannak a közönségnek lesznek feladva. Másrészt vannak olyan technikai bonyodalmak, amelyeknek a részletes feldolgozása egy nehéz feladat fókuszáról elvonná a figyelmet, de egy könnyűnél a nagyvonalú elhanyagolásuk triviálissá tenné a feladatot. (A Kolmogorov-bonyolultság fejezetben még így is szőnyeg alá söpörtük a prefix kódolás kérdését.)
+
+A \LOGSPACE versus \NL jelölés következetlen, de az \Language gyakori használata indokolttá teszi. A gyakori ,,adjunk \LOGSPACE algoritmust'' mondatséma miatt sem lenne triviális javítani.
+
+Az $\overline{x_i}$ nem szép. Hogy csinálják ezt rendesen?
+
+Rajtam kívül mindenki {\cl{\Sigma^p_2}}-val jelöli \Sigmatwo-t. És a p-t dőlt betűvel szokták írni.
+
+Bele kellene írni, hogy minden $\log n$ kettő alapú.
+
+Rögzíteni kellene, hogy a Boole-függvények tárgyalásakor a 0-t a hamis, az 1-et az igaz szinonímájaként használom, akár mondat közben is szemrebbenés nélkül váltogatva a két jelölést.
+
+Katiék könyvében a definíció vizuálisan kiemelkedik (egy kis krikszkraksszal.)
+
+A definíciókban a definiált szó legyen dőlt betűs (vagy félkövér?).
+
+Kéne bele párhuzamos bonyolultságelmélet.
+
+Teljesen lerabolni az Arora-Barak könyvet: http://www.cs.princeton.edu/theory/complexity/ . (Brutális nagy munka lesz.)
+
+Ismert hibák: A \hard hülyén eltávolodott a feladat sorszámától. Teljesen átnézendő, hogy mi és mi között mennyi vspace-nek kellene lennie, és most mennyi van ehelyett. Ha többet segítek, akkor azok azonos feladatszámot kapnak. (Ne segítsek többet.) Ha egy feladatnak több részfeladata van, akkor az (a) legyen egy sorban a feladat számával.
+
+
+
 
 \section*{Jelölések}
 \addcontentsline{toc}{section}{Jelölések}
@@ -277,7 +323,6 @@ A forrásfile-ok az EGRES csoport példatárán alapulnak. Köszönet ...
 \part{Feladatok}
 
 \input{feladatok}
-\input{feladatok_daniel}
 
 
 \makeatletter
@@ -295,7 +340,6 @@ A forrásfile-ok az EGRES csoport példatárán alapulnak. Köszönet ...
 \part{Megoldások}
 
 \input{feladatok}
-\input{feladatok_daniel}
 
 \newpage
 \phantomsection
